@@ -16,15 +16,22 @@ screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
 
 
-def buttons_menu():
-    play_button = pygame.draw.rect(100,100,50,25)
 
+def buttons_menu(): #makes drawing easier
+    play_button = pygame.draw.rect(screen,purple,(0.1*width,0.1*higth,0.3*width,25))
+    instr_button = pygame.draw.rect(screen,green,(0.1*width,0.2*higth,0.3*width,25))
+    quit_button = pygame.draw.rect(screen,blue,(0.1*width,0.3*higth,0.3*width,25))
+    dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25))
 
+#initializes rectangle coords
+play_button = pygame.draw.rect(screen,purple,(0.1*width,0.1*higth,0.3*width,25))
+instr_button = pygame.draw.rect(screen,green,(0.1*width,0.2*higth,0.3*width,25))
+quit_button = pygame.draw.rect(screen,blue,(0.1*width,0.3*higth,0.3*width,25))
+dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25))
+    
 
-
-def dice_roll():
-    #screen.fill(black)
-    dice_result = font.render(str(random.randint(2,12)),1,purple)
+def dice_roll(): #rolls a pair of dice and gives you the result
+    dice_result = font.render(str(random.randint(2,12)),1,yellow)
     screen.blit(dice_result,(0.95*width,0.05*higth))
 
 
@@ -35,23 +42,30 @@ def music(): #start music function
 def stop_music():#stop music function
     pygame.mixer.music.stop()
 
-def draw():
-    screen.fill(black)
-    buttons_menu
-    dice_roll
-    pygame.display.flip()
 
 
+
+#dice_result = font.render((random1),1,yellow)
+#screen.blit(dice_result,(0.95*width,0.05*higth))
 def homescreen():
     running = True
+    random1 = ""
     while running: #homescreen loop
+        screen.fill(black)
+        buttons_menu()  
         for event in pygame.event.get(): 
+            
             if event.type == pygame.QUIT: #quits the game if you press the red button
                 pygame.quit()
                 sys.exit()
-        draw
-
-
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                if play_button.collidepoint(pos):
+                    print("LOL")
+                    random1 = str(random.randint(2,12))
+        dice_result = font.render((random1),1,yellow)
+        screen.blit(dice_result,(0.95*width,0.05*higth))
+        pygame.display.flip()
 
 
 homescreen()
