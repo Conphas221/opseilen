@@ -31,7 +31,7 @@ dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25))
     
 
 def dice_roll(): #rolls a pair of dice and gives you the result
-    dice_result = font.render(str(random.randint(2,12)),1,yellow)
+    dice_result = font.render(str(random.randint(1,6)),1,yellow)
     screen.blit(dice_result,(0.95*width,0.05*higth))
 
 
