@@ -16,6 +16,10 @@ largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
 
+
+#inp = str(inputbox.ask(screen, 'Message'))   input fuction
+                  #  print(inp)
+
 mc_sport = ['Welke manier van sport word het meest beoefend in Rotterdam?']
 o_sport = ['Hoe heet het centrum voor sport naast de Kuip?']
 mc_history = ['Wat was tijdens de Tweede Wereldoorlog de enige weg naar het centrum die de Duitsers probeerden te bereiken?']
@@ -24,6 +28,8 @@ mc_entert = ['Hoe heet de culturele en culinaire ontdekkingstocht door Rotterdam
 o_entert = ['Welk kunstwerk wordt ook wel de Nederlandse versie van de Sixtijnse Kapel genoemd?']
 mc_geo = ['Wat is de oudste brug van Rotterdam?']
 o_geo = ['Hoe heten de bekendste huizen van Rotterdam?']
+random.shuffle(mc_sport)
+
 
 ori_mc_sport = [['Welke manier van sport word het meest beoefend in Rotterdam?','A.Fitness']]
 ori_o_sport = [['Hoe heet het centrum voor sport naast de Kuip?','Topsportcentrum Rotterdam']]
@@ -45,7 +51,7 @@ ans_mc_geo = [['A.De Willemsbrug','B.De Koninginnebrug','C.De van Briennenoordbr
 ans_o_geo = []
 
 
-
+given_answers = []
 
 
 
@@ -81,6 +87,7 @@ def stop_music():#stop music function
 def homescreen():
     running = True
     random1 = ""
+    score = int(0)
     while running: #homescreen loop
         screen.fill(black)
         buttons_menu()  
@@ -92,10 +99,15 @@ def homescreen():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 if play_button.collidepoint(pos):
-                    inp = str(inputbox.ask(screen, 'Message'))
-                    print(inp)
+                    print(mc_sport[0])
+                    print(ans_mc_sport)
+                    answer = str(inputbox.ask(screen, 'Enter a for A, b for B or c for C.'))
+                    
                     random1 = str(random.randint(1,6))
-
+                    if answer == "a":
+                        score += 100
+        score_result = font.render((str(score)),1,yellow)
+        screen.blit(score_result,(0.05*width,0.95*higth))
         dice_result = font.render((random1),1,yellow)
         screen.blit(dice_result,(0.95*width,0.05*higth))
         pygame.display.flip()
