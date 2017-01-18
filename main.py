@@ -1,4 +1,5 @@
-import pygame, math, sys, random, time
+import pygame, math, sys, random, time, string, inputbox
+from pygame.locals import *
 pygame.init() # makes pygame work
 width = 800
 higth = 600
@@ -14,6 +15,41 @@ font = pygame.font.Font(None, 30)
 largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
+
+mc_sport = ['Welke manier van sport word het meest beoefend in Rotterdam?']
+o_sport = ['Hoe heet het centrum voor sport naast de Kuip?']
+mc_history = ['Wat was tijdens de Tweede Wereldoorlog de enige weg naar het centrum die de Duitsers probeerden te bereiken?']
+o_history = ['Waar staat de afkorting van de krant NRC voor?']
+mc_entert = ['Hoe heet de culturele en culinaire ontdekkingstocht door Rotterdam?']
+o_entert = ['Welk kunstwerk wordt ook wel de Nederlandse versie van de Sixtijnse Kapel genoemd?']
+mc_geo = ['Wat is de oudste brug van Rotterdam?']
+o_geo = ['Hoe heten de bekendste huizen van Rotterdam?']
+
+ori_mc_sport = [['Welke manier van sport word het meest beoefend in Rotterdam?','A.Fitness']]
+ori_o_sport = [['Hoe heet het centrum voor sport naast de Kuip?','Topsportcentrum Rotterdam']]
+ori_mc_history = [['Wat was tijdens de Tweede Wereldoorlog de enige weg naar het centrum die de Duitsers probeerden te bereiken?','B.Maasbrug']]
+ori_o_history = [['Waar staat de afkorting van de krant NRC voor?','Nieuwe Rotterdamsche Courant']]
+ori_mc_entert = [['Hoe heet de culturele en culinaire ontdekkingstocht door Rotterdam?','C.Bike&Bite']]
+ori_o_entert = [['Welk kunstwerk wordt ook wel de Nederlandse versie van de Sixtijnse Kapel genoemd?','De Markthal']]
+ori_mc_geo = [['Wat is de oudste brug van Rotterdam?','B.De Koninginnebrug']]
+ori_o_geo = [['Hoe heten de bekendste huizen van Rotterdam?','De Kubuswoningen']]
+
+
+ans_mc_sport = [['A.Fitness','B.Voetbal','C.Basketbal']]
+ans_o_sport = []
+ans_mc_history = [['A.De Nieuwe Binnenweg','B.Maasbrug','C.Koninginnenbrug']]
+ans_o_history = []
+ans_mc_entert = [['A.Drive&Eat','B.Bicycle Dinner','C.Bike&Bite']]
+ans_o_entert = []
+ans_mc_geo = [['A.De Willemsbrug','B.De Koninginnebrug','C.De van Briennenoordbrug']]
+ans_o_geo = []
+
+
+
+
+
+
+
 
 
 
@@ -56,8 +92,10 @@ def homescreen():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 if play_button.collidepoint(pos):
-                    print("LOL")
+                    inp = str(inputbox.ask(screen, 'Message'))
+                    print(inp)
                     random1 = str(random.randint(1,6))
+
         dice_result = font.render((random1),1,yellow)
         screen.blit(dice_result,(0.95*width,0.05*higth))
         pygame.display.flip()
