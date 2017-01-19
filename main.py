@@ -113,6 +113,12 @@ def homescreen():
     given_answer = ""
     ask_quest_cat = ""
     global score
+
+    player1 = str(inputbox.ask(screen, "enter name for player1"))
+    player2 = str(inputbox.ask(screen, "enter name for player2"))
+    player3 = str(inputbox.ask(screen, "enter name for player3"))
+    player4 = str(inputbox.ask(screen, "enter name for player4"))
+
     while running: #homescreen loop
         screen.fill(black)
         buttons_menu()  
