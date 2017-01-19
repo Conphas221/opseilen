@@ -155,6 +155,7 @@ def homescreen():
                     if ask_quest_cat == "1":
                         question = random.choice(mc_sport)
                         print(question)
+                        print(ans_mc_sport)
                         answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
                         answer = [answer]
                         question = [question]
@@ -166,6 +167,7 @@ def homescreen():
                     elif ask_quest_cat == "2":
                         question = random.choice(mc_entert)
                         print(question)
+                        print(ans_mc_entert)
                         answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
                         answer = [answer]
                         question = [question]
@@ -177,6 +179,7 @@ def homescreen():
                     elif ask_quest_cat == "3":
                         question = random.choice(mc_history)
                         print(question)
+                        print(ans_mc_history)
                         answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
                         answer = [answer]
                         question = [question]
@@ -188,6 +191,7 @@ def homescreen():
                     elif ask_quest_cat == "4":
                         question = random.choice(mc_geo)
                         print(question)
+                        print(ans_mc_geo)
                         answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
                         answer = [answer]
                         question = [question]
