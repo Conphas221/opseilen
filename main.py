@@ -15,11 +15,12 @@ font = pygame.font.Font(None, 30)
 largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
- #random1 = str(random.randint(1,6))   this line rolls the die
 score = int(0)
-#inp = str(inputbox.ask(screen, 'Message'))   input fuction
-                  #  print(inp)
+correct = 2
+#inp = str(inputbox.ask(screen, 'Message'))   input fuction from inputbox
+                
 
+#all questions
 mc_sport = ['Welke manier van sport word het meest beoefend in Rotterdam?']
 o_sport = ['Hoe heet het centrum voor sport naast de Kuip?']
 mc_history = ['Wat was tijdens de Tweede Wereldoorlog de enige weg naar het centrum die de Duitsers probeerden te bereiken?']
@@ -30,7 +31,7 @@ mc_geo = ['Wat is de oudste brug van Rotterdam?']
 o_geo = ['Hoe heten de bekendste huizen van Rotterdam?']
 
 
-
+#question answer pairs to check if the answer is correct
 ori_mc_sport = [['Welke manier van sport word het meest beoefend in Rotterdam?','a']]
 ori_o_sport = [['Hoe heet het centrum voor sport naast de Kuip?','topsportcentrum rotterdam']]
 ori_mc_history = [['Wat was tijdens de Tweede Wereldoorlog de enige weg naar het centrum die de Duitsers probeerden te bereiken?','b']]
@@ -40,7 +41,7 @@ ori_o_entert = [['Welk kunstwerk wordt ook wel de Nederlandse versie van de Sixt
 ori_mc_geo = [['Wat is de oudste brug van Rotterdam?','b']]
 ori_o_geo = [['Hoe heten de bekendste huizen van Rotterdam?','de kubuswoningen']]
 
-
+#to display the answers
 ans_mc_sport = [['A.Fitness','B.Voetbal','C.Basketbal']]
 ans_o_sport = [['topsportcentrum rotterdam']]
 ans_mc_history = [['A.De Nieuwe Binnenweg','B.Maasbrug','C.Koninginnenbrug']]
@@ -61,13 +62,16 @@ def buttons_menu(): #makes drawing easier
     open_button = pygame.draw.rect(screen,green,(0.1*width,0.2*higth,0.3*width,25))
     quit_button = pygame.draw.rect(screen,blue,(0.1*width,0.3*higth,0.3*width,25))
     dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25))
+    
 
 #initializes rectangle coords
-mc_button = pygame.draw.rect(screen,purple,(0.1*width,0.1*higth,0.3*width,25))
-open_button = pygame.draw.rect(screen,green,(0.1*width,0.2*higth,0.3*width,25))
-quit_button = pygame.draw.rect(screen,blue,(0.1*width,0.3*higth,0.3*width,25))
-dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25))
-    
+mc_button = pygame.draw.rect(screen,purple,(0.1*width,0.1*higth,0.3*width,25)) # mc question button
+open_button = pygame.draw.rect(screen,green,(0.1*width,0.2*higth,0.3*width,25)) #open question button
+quit_button = pygame.draw.rect(screen,blue,(0.1*width,0.3*higth,0.3*width,25)) #place to draw quit button (quit doesn't work yet)
+dice_button = pygame.draw.rect(screen,red,(0.1*width,0.4*higth,0.3*width,25)) #place to draw button to roll a die
+quest_field = pygame.draw.rect(screen,black,(0.1*width,0.6*higth,0.4*width,25)) # place to draw question
+mc_field = pygame.draw.rect(screen,black,(0.1*width,0.7*higth,0.4*width,25)) #place to draw mc options
+was_question_correct_rect = pygame.draw.rect(screen,black,(0.1*width,0.8*higth,0.4*width,25))  #place to draw "wrong answer' or 'correct' message
 
 
 def music(): #start music function   
@@ -78,46 +82,52 @@ def stop_music():#stop music function
 
 
 def question_open(cat,ori_cat):
-    global score
-    question = random.choice(cat)
-    print(question)
-    answer = str(inputbox.ask(screen, "Give your answer!"))
-    answer = [answer]
-    question = [question]
-    question.extend(answer)
-    if question in ori_cat:
+    global score #needed to avoid error
+    global correct
+    question = random.choice(cat) #to get a random question from the corresponding list
+    screen.blit(font.render(question,True,(255,255,255)),(0.1*width,0.6*higth)) #to draw the question
+    pygame.display.update(quest_field) #to display the question
+    answer = str(inputbox.ask(screen, "Give your answer!")) #asks for answer
+    answer = [answer] #transforms answer to list 
+    question = [question] #transforms question to list
+    question.extend(answer) #adds question and answer together
+    if question in ori_cat: #checks if the answer is correct
         score += 100
+        correct = 1
     else:
-        print("Wrong answer!")
+        correct = 0
 
 def question_mc(cat,ans_cat,ori_cat):
-    global score
-    question = random.choice(cat)
-    print(question)
-    print(ans_cat)
-    answer = str(inputbox.ask(screen,  'Enter a, b or c.'))
-    answer = [answer]
-    question = [question]
-    question.extend(answer)
-    if question in ori_cat:
+    global score #needed to avoid error
+    global correct
+    question = random.choice(cat) #takes a random question from the corresponding list
+    screen.blit(font.render(question,True,(255,255,255)),(0.1*width,0.6*higth)) #draws the question
+    screen.blit(font.render(str(ans_cat),True,(255,255,255)),(0.1*width,0.7*higth)) #draws the options
+    pygame.display.update(quest_field) #displays the question
+    pygame.display.update(mc_field) #displays the options
+    answer = str(inputbox.ask(screen,  'Enter a, b, or c.')) #asks for the answer
+    answer = [answer] #transforms the answer to a list
+    question = [question] #transforms the question to a list
+    question.extend(answer) #adds the question and answer to check if it is correct
+    if question in ori_cat: #checks if the question + answer is correct by comparing it to the correct question+answer pairs
         score += 100
+        correct = 1
     else:
-        print("Wrong answer!")
+        correct = 0
 
 
-def homescreen():
+def homescreen(): 
     running = True
-    random1 = ""
-    answ = ""
-    quest = ""
-    given_answer = ""
-    ask_quest_cat = ""
-    global score
+    random1 = "" #needed for the die
+    quest = "" 
+    ask_quest_cat = "" #needed to let questions work
+    global correct
+    global score # needed to avoid error
 
-    player1 = str(inputbox.ask(screen, "enter name for player1"))
-    player2 = str(inputbox.ask(screen, "enter name for player2"))
-    player3 = str(inputbox.ask(screen, "enter name for player3"))
-    player4 = str(inputbox.ask(screen, "enter name for player4"))
+    #player1 = str(inputbox.ask(screen, "enter name for player1"))
+    #player2 = str(inputbox.ask(screen, "enter name for player2"))
+    #player3 = str(inputbox.ask(screen, "enter name for player3"))
+    #player4 = str(inputbox.ask(screen, "enter name for player4"))
 
     while running: #homescreen loop
         screen.fill(black)
@@ -157,14 +167,15 @@ def homescreen():
                         question_mc(mc_geo,ans_mc_geo,ori_mc_geo)
                 elif dice_button.collidepoint(pos):    
                     random1 = str(random.randint(1,6))
-        score_result = font.render((str(score)),1,yellow)
-        screen.blit(score_result,(0.05*width,0.95*higth))
+        if correct == 1:
+            screen.blit(font.render('Your answer is correct!',True,white),(0.1*width,0.8*higth))
+        elif correct == 0:
+            screen.blit(font.render('Your answer is wrong!',True,white),(0.1*width,0.8*higth))
+        screen.blit(font.render(str(score),True,white),(0.05*width,0.95*higth))
         screen.blit(font.render('Roll the die',True,(255,255,255)),(0.1*width,0.4*higth))
         screen.blit(font.render('Multiple choice question',True,(255,255,255)),(0.1*width,0.1*higth))
         screen.blit(font.render('Open question',True,(255,255,255)),(0.1*width,0.2*higth))
-        screen.blit(font.render(answ,True,(255,255,255)),(0.1*width,0.5*higth))
-        dice_result = font.render((random1),1,yellow)
-        screen.blit(dice_result,(0.95*width,0.05*higth))
+        screen.blit(font.render(random1,True,(255,255,255)),(0.95*width,0.05*higth))
         pygame.display.flip()
 
 
