@@ -16,7 +16,7 @@ largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
  #random1 = str(random.randint(1,6))   this line rolls the die
-
+score = int(0)
 #inp = str(inputbox.ask(screen, 'Message'))   input fuction
                   #  print(inp)
 
@@ -77,7 +77,32 @@ def stop_music():#stop music function
     pygame.mixer.music.stop()
 
 
+def question_open(cat,ori_cat):
+    global score
+    question = random.choice(cat)
+    print(question)
+    answer = str(inputbox.ask(screen, "Give your answer!"))
+    answer = [answer]
+    question = [question]
+    question.extend(answer)
+    if question in ori_cat:
+        score += 100
+    else:
+        print("Wrong answer!")
 
+def question_mc(cat,ans_cat,ori_cat):
+    global score
+    question = random.choice(cat)
+    print(question)
+    print(ans_cat)
+    answer = str(inputbox.ask(screen,  'Enter a, b or c.'))
+    answer = [answer]
+    question = [question]
+    question.extend(answer)
+    if question in ori_cat:
+        score += 100
+    else:
+        print("Wrong answer!")
 
 
 def homescreen():
@@ -87,7 +112,7 @@ def homescreen():
     quest = ""
     given_answer = ""
     ask_quest_cat = ""
-    score = int(0)
+    global score
     while running: #homescreen loop
         screen.fill(black)
         buttons_menu()  
@@ -102,49 +127,13 @@ def homescreen():
                 if open_button.collidepoint(pos):
                     ask_quest_cat = str(inputbox.ask(screen,'enter 1 for sport, 2 for entertainment, 3 for history or 4 for geography'))
                     if ask_quest_cat == "1":
-                        question = random.choice(o_sport)
-                        print(question)
-                        answer = str(inputbox.ask(screen, "Give your answer!"))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_o_sport:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_open(o_sport,ori_o_sport)
                     elif ask_quest_cat == "2":
-                        question = random.choice(o_entert)
-                        print(question)
-                        answer = str(inputbox.ask(screen, "Give your answer!"))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_o_entert:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_open(o_entert,ori_o_entert)
                     elif ask_quest_cat == "3":
-                        question = random.choice(o_history)
-                        print(question)
-                        answer = str(inputbox.ask(screen, "Give your answer!"))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_o_history:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_open(o_history,ori_o_history)
                     elif ask_quest_cat == "4":
-                        question = random.choice(o_geo)
-                        print(question)
-                        answer = str(inputbox.ask(screen, "Give your answer!"))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_o_geo:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_open(o_geo,ori_o_geo)
                    
                     #if answer == "a":
                     #    score += 100
@@ -153,53 +142,13 @@ def homescreen():
                 elif mc_button.collidepoint(pos):
                     ask_quest_cat = str(inputbox.ask(screen,'enter 1 for sport, 2 for entertainment, 3 for history or 4 for geography'))
                     if ask_quest_cat == "1":
-                        question = random.choice(mc_sport)
-                        print(question)
-                        print(ans_mc_sport)
-                        answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_mc_sport:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_mc(mc_sport,ans_mc_sport,ori_mc_sport)
                     elif ask_quest_cat == "2":
-                        question = random.choice(mc_entert)
-                        print(question)
-                        print(ans_mc_entert)
-                        answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_mc_entert:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_mc(mc_entert,ans_mc_entert,ori_mc_entert)
                     elif ask_quest_cat == "3":
-                        question = random.choice(mc_history)
-                        print(question)
-                        print(ans_mc_history)
-                        answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_mc_history:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_mc(mc_history,ans_mc_history,ori_mc_history)
                     elif ask_quest_cat == "4":
-                        question = random.choice(mc_geo)
-                        print(question)
-                        print(ans_mc_geo)
-                        answer = str(inputbox.ask(screen,  'Enter a for A, b for B or c for C.'))
-                        answer = [answer]
-                        question = [question]
-                        question.extend(answer)
-                        if question in ori_mc_geo:
-                             score += 100
-                        else:
-                            print("Wrong answer!")
+                        question_mc(mc_geo,ans_mc_geo,ori_mc_geo)
                 elif dice_button.collidepoint(pos):    
                     random1 = str(random.randint(1,6))
         score_result = font.render((str(score)),1,yellow)
