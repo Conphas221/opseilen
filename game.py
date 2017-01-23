@@ -37,10 +37,10 @@ class Game:
         tower.Tower_yellow = tower.Tower_yellow((float(self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 
         #Create the grid
-        Grid.T_grid1 = Grid(self, (float(self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        Grid.T_grid2 = Grid(self, float(self.width / 3), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        Grid.T_grid3 = Grid(self, float(self.width / 3)  + (float(self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        Grid.T_grid4 = Grid(self, (float(self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
+        Grid.RedGrid = Grid.RedGrid(self, float(self.width / 3), (0 + float(self.height / 20)))
+        Grid.YellowGrid = Grid.YellowGrid(self, (float(self.width / 3) * 2), (0 + float(self.height / 20)))
+        Grid.BlueGrid = Grid.BlueGrid(self, (float(self.width / 3) / 2), (0 + float(self.height / 20)))
+        Grid.Greengrid = Grid.Greengrid(self, float(self.width / 3)  + (float(self.width / 3) / 2), (0 + float(self.height / 20)))
 
 		# Create Players
 		#self.Player1 = Player1(self)
@@ -58,10 +58,10 @@ class Game:
         tower.Tower_blue.update()
         tower.Tower_yellow.update()
 
-        Grid.T_grid1.update()
-        Grid.T_grid2.update()
-        Grid.T_grid3.update()
-        Grid.T_grid4.update()
+        Grid.RedGrid.update()
+        Grid.YellowGrid.update()
+        Grid.BlueGrid.update()
+        Grid.GreenGrid.update()
 
 		#self.Player1.update()
 
@@ -82,10 +82,10 @@ class Game:
         tower.Tower_yellow.draw(self.screen)
 
         #Draw grid
-        Grid.T_grid1.draw(self.screen)
-        Grid.T_grid2.draw(self.screen)
-        Grid.T_grid3.draw(self.screen)
-        Grid.T_grid4.draw(self.screen)
+        Grid.RedGrid.draw(self.screen)
+        Grid.YellowGrid.draw(self.screen)
+        Grid.BlueGrid.draw(self.screen)
+        Grid.GreenGrid.draw(self.screen)
 
 		# Draw Players
 		#self.Player1.draw(self.screen)
