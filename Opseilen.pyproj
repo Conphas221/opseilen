@@ -24,6 +24,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="game.py" />
+    <Compile Include="Grid.py" />
     <Compile Include="main.py" />
     <Compile Include="background.py">
       <SubType>Code</SubType>
