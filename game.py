@@ -36,7 +36,6 @@ class Game:
 		tower.Tower_blue = tower.Tower_blue((float(self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 		tower.Tower_yellow = tower.Tower_yellow((float(self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 
-
 		# Create Players
 		#self.Player1 = Player1(self)
 
