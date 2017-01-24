@@ -1,4 +1,10 @@
-import pygame, math, sys, random, time, string, os, string, button
+import pygame
+import math 
+import sys
+import random 
+import string
+import os 
+import button
 from pygame.locals import *
 
 white = (255,255,255)
