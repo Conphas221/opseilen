@@ -23,6 +23,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="button.py" />
     <Compile Include="game.py" />
     <Compile Include="globalz.py" />
     <Compile Include="Grid.py" />
@@ -55,6 +56,7 @@
     <Folder Include="questions and dice\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="background.mp3" />
     <Content Include="questions and dice\Turn.pyproj" />
     <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
   </ItemGroup>
