@@ -107,5 +107,3 @@ class Game:
 #		#elif event.type == pygame.KEYDOWN:
 #		#	game.Player1.key_event(event)
 #	return False
-
-	
