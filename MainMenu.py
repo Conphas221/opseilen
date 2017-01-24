@@ -1,4 +1,4 @@
-import pygame, math, sys, random, time, string, os, other, globalz
+import pygame, math, sys, random, time, string, os, string, button
 from pygame.locals import *
 
 white = (255,255,255)
@@ -37,46 +37,40 @@ class MainMenu:
                 # Set default font
                 self.font = pygame.font.Font(None, 30)
 
-                self.Rects = Rects(self)
+                self.image = pygame.image.load(os.path.join('/Users/emmadrost/Documents/PROJECT2/opseilen/project2/euromast1.bmp'))
 
-
+                
         def draw(self):
-            self.screen.fill((212, 212, 212))
-            image = pygame.image.load(os.path.join('/Users/emmadrost/Documents/Development/python/euromast1.bmp'))
-            self.screen.blit(image,(0, 0))
-            self.Rects.draw(self.screen)
+                self.screen.fill((212, 212, 212))
+                
+                self.screen.blit(self.image,(0, 0))
 
-            pygame.display.flip()
+
+# draw's the buttons for main menu
+
+                button.draw(self, 35, 40, 550, 35, "MAIN MENU", 28, (0, 0, 0), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 120, 200, 35, "Start Game", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 200, 200, 35, "High Score", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 280, 200, 35, "Spelregels", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 360, 200, 35, "Multiplayer", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 440, 200, 35, "Quit Game", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+
+                pygame.display.flip()
 
         def update(self):
+            button.update(self)
             pass
 
         def program_loop(self):
                 while not process_events():
                         self.update()
                         self.draw()
-        
-        
+              
 class Side:
         def __init__(self, color):
                 self.Color = color
         def draw(self, screen, x1, y1, x2, y2):
                 pygame.draw.rect(screen, self.Color, (int(x1), int(y1), int(x2), int(y2)))
-
-
-class Rects:
-    def __init__(self,mainmenu):
-        self.Mainmenu = mainmenu
-    def draw(self,screen):
-        mc_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.1*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) # mc question button
-        open_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.2*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #open question button
-        quit_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.3*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #place to draw quit button (quit doesn't work yet)
-        dice_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.4*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #place to draw button to roll a die
-        quest_field = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.6*self.Mainmenu.height,0.4*self.Mainmenu.width,25)) # place to draw question
-        mc_field = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.7*self.Mainmenu.height,0.4*self.Mainmenu.width,25)) #place to draw mc options
-        rules_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.8*self.Mainmenu.height,0.3*self.Mainmenu.width,25))
-        was_question_correct_rect = pygame.draw.rect(screen,black,(0.1*self.Mainmenu.width,0.8*self.Mainmenu.height,0.4*self.Mainmenu.width,25))  #place to draw "wrong answer' or 'correct' message
-        
 
 class frontlayer1:
         def __init__(self, x1, y1, x2, y2):
@@ -92,14 +86,12 @@ class frontlayer1:
         def draw(self, screen):
                 pygame.draw.rect(screen, white, (int(self.x1), int(self.y1), int(self.x2), int(self.y2)))
 
-
 class frontlayer2:
         def __init__(self, x1, y1, x2, y2):
                 self.x1 = x1
                 self.y1 = y1
                 self.x2 = x2
                 self.y2 = y2
-
 
         def update(self):
                 return True
@@ -123,8 +115,3 @@ def program():
 # Starts program
 program()
 
-
-
-
-
-        
