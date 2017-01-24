@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Opseilen", "Opseilen.pyproj", "{BD1E23AF-A1D5-45BF-84AC-599678D362FA}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Opseilen", "Opseilen.pyproj", "{9103C85E-1B30-4A0B-A648-4C855568F497}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,8 +11,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD1E23AF-A1D5-45BF-84AC-599678D362FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD1E23AF-A1D5-45BF-84AC-599678D362FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9103C85E-1B30-4A0B-A648-4C855568F497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9103C85E-1B30-4A0B-A648-4C855568F497}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

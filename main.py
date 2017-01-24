@@ -1,21 +1,28 @@
-import pygame, math, sys
-width = 1024
-higth = 768
-resolution = (width,higth)
-red = (255,0,0) #configures some colors
-green = (0,255,0)
-blue = (0,0,255)
-white = (255,255,255)
-black = (0,0,0)
-yellow = (255,255,0)
-pygame.init() # makes pygame work
-screen = pygame.display.set_mode(resolution) #sets the screen dimensions
+import pygame
+import math
+import sys
+import game
+import other
+import globalz
 
-pygame.display.set_caption('Opseilen!')
-while True: # main game loop
-    for event in pygame.event.get(): 
-        if event.type == pygame.QUIT: #quits the game if you press the red button
-            pygame.quit()
-            sys.exit()
-    
-    pygame.display.flip()
+
+class Empty:
+	def __init__(self):
+		self.IsEmpty = True
+empty = Empty()
+
+class Node:
+	def __init__(self, value, tail):
+		self.IsEmpty = False
+		self.Value = value
+		self.Tail = tail 
+	
+
+_game = game.Game()
+
+# Starts program
+def program():
+	#game.Game.program_loop()
+	_game.program_loop()
+
+program()
