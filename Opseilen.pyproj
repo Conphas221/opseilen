@@ -24,6 +24,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="button.py" />
+=======
+>>>>>>> questions
     <Compile Include="game.py" />
     <Compile Include="globalz.py" />
     <Compile Include="Grid.py" />
@@ -56,6 +60,10 @@
     <Folder Include="questions and dice\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="background.mp3" />
+=======
+>>>>>>> questions
     <Content Include="questions and dice\Turn.pyproj" />
     <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
   </ItemGroup>
@@ -79,16 +87,26 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
+<<<<<<< HEAD
+    <ProjectGuid>bd1e23af-a1d5-45bf-84ac-599678d362fa</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>questions_dice.py</StartupFile>
+=======
     <ProjectGuid>9103c85e-1b30-4a0b-a648-4c855568f497</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
     <StartupFile>main.py</StartupFile>
+>>>>>>> questions
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Opseilen</Name>
+<<<<<<< HEAD
+    <RootNamespace>Opseilen</RootNamespace>
+=======
     <RootNamespace>main</RootNamespace>
+>>>>>>> questions
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,6 +117,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="inputbox.py" />
+    <Compile Include="questions_dice.py" />
+    <Compile Include="useless atm.py" />
+=======
     <Compile Include="button.py" />
     <Compile Include="game.py" />
     <Compile Include="globalz.py" />
@@ -135,6 +158,7 @@
     <Content Include="background.mp3" />
     <Content Include="questions and dice\Turn.pyproj" />
     <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
+>>>>>>> questions
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -150,5 +174,9 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
+<<<<<<< HEAD
+>>>>>>> branch-r
+=======
 >>>>>>> origin/questions
+>>>>>>> questions
 </Project>
