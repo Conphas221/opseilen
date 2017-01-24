@@ -1,6 +1,8 @@
 import pygame
 import math
 import sys
+import globalz
+import other
 
 red = (255,0,0) # Configures some colors
 green = (0,255,0)

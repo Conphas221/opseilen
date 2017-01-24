@@ -1,4 +1,4 @@
-import pygame, math, sys, random, time, string, os
+import pygame, math, sys, random, time, string, os, other, globalz
 from pygame.locals import *
 
 white = (255,255,255)

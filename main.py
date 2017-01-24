@@ -2,6 +2,8 @@ import pygame
 import math
 import sys
 import game
+import other
+import globalz
 
 
 class Empty:

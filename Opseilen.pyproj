@@ -24,10 +24,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="game.py" />
+    <Compile Include="globalz.py" />
+    <Compile Include="Grid.py" />
+    <Compile Include="inputbox.py" />
+    <Compile Include="LinkNaarRules.py" />
     <Compile Include="main.py" />
     <Compile Include="background.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainMenu.py" />
+    <Compile Include="module1.py" />
+    <Compile Include="other.py" />
     <Compile Include="player1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,9 +44,19 @@
     <Compile Include="process_ev.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="questions and dice\inputbox.py" />
+    <Compile Include="questions and dice\questions_dice.py" />
     <Compile Include="tower.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="questions and dice\" />
+    <Folder Include="questions and dice\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="questions and dice\Turn.pyproj" />
+    <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
