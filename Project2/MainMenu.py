@@ -1,4 +1,4 @@
-import pygame, math, sys, random, time, string, os, other, globalz
+import pygame, math, sys, random, time, string, os, pygame.font, pygame.event, pygame.draw, string, inputbox
 from pygame.locals import *
 
 white = (255,255,255)
@@ -68,14 +68,11 @@ class Rects:
     def __init__(self,mainmenu):
         self.Mainmenu = mainmenu
     def draw(self,screen):
-        mc_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.1*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) # mc question button
-        open_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.2*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #open question button
-        quit_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.3*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #place to draw quit button (quit doesn't work yet)
-        dice_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.4*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #place to draw button to roll a die
-        quest_field = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.6*self.Mainmenu.height,0.4*self.Mainmenu.width,25)) # place to draw question
-        mc_field = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.7*self.Mainmenu.height,0.4*self.Mainmenu.width,25)) #place to draw mc options
-        rules_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.8*self.Mainmenu.height,0.3*self.Mainmenu.width,25))
-        was_question_correct_rect = pygame.draw.rect(screen,black,(0.1*self.Mainmenu.width,0.8*self.Mainmenu.height,0.4*self.Mainmenu.width,25))  #place to draw "wrong answer' or 'correct' message
+        start_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.1*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) # start
+        highscore_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.2*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #high score
+        spelregels_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.3*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #spelregels
+        multiplayer_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.4*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) #multiplayer
+        quit_button = pygame.draw.rect(screen,blue,(0.1*self.Mainmenu.width,0.5*self.Mainmenu.height,0.3*self.Mainmenu.width,25)) # quit
         
 
 class frontlayer1:
@@ -124,7 +121,9 @@ def program():
 program()
 
 
-
-
-
-        
+#CODE TO --> WINDOW CLOSES AND GAME STARTS
+#def startGame:
+#        if buttonPressed = True:
+#                screen.fil(256, 256, 256)
+#    else:
+#        screen.blit(buttonImage, (x, y)
