@@ -24,6 +24,104 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="button.py" />
+=======
+>>>>>>> questions
+    <Compile Include="game.py" />
+    <Compile Include="globalz.py" />
+    <Compile Include="Grid.py" />
+    <Compile Include="inputbox.py" />
+    <Compile Include="LinkNaarRules.py" />
+    <Compile Include="main.py" />
+    <Compile Include="background.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainMenu.py" />
+    <Compile Include="module1.py" />
+    <Compile Include="other.py" />
+    <Compile Include="player1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="points.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="process_ev.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="questions and dice\inputbox.py" />
+    <Compile Include="questions and dice\questions_dice.py" />
+    <Compile Include="tower.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="questions and dice\" />
+    <Folder Include="questions and dice\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="background.mp3" />
+=======
+>>>>>>> questions
+    <Content Include="questions and dice\Turn.pyproj" />
+    <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
+  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+<<<<<<< HEAD
+    <ProjectGuid>bd1e23af-a1d5-45bf-84ac-599678d362fa</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>questions_dice.py</StartupFile>
+=======
+    <ProjectGuid>9103c85e-1b30-4a0b-a648-4c855568f497</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>main.py</StartupFile>
+>>>>>>> questions
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Opseilen</Name>
+<<<<<<< HEAD
+    <RootNamespace>Opseilen</RootNamespace>
+=======
+    <RootNamespace>main</RootNamespace>
+>>>>>>> questions
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="inputbox.py" />
+    <Compile Include="questions_dice.py" />
+    <Compile Include="useless atm.py" />
+=======
     <Compile Include="button.py" />
     <Compile Include="game.py" />
     <Compile Include="globalz.py" />
@@ -60,6 +158,7 @@
     <Content Include="background.mp3" />
     <Content Include="questions and dice\Turn.pyproj" />
     <Content Include="questions and dice\__pycache__\inputbox.cpython-35.pyc" />
+>>>>>>> questions
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -75,48 +174,9 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
-=======
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>bd1e23af-a1d5-45bf-84ac-599678d362fa</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>questions_dice.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
-    <OutputPath>.</OutputPath>
-    <Name>Opseilen</Name>
-    <RootNamespace>Opseilen</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>true</DebugSymbols>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="inputbox.py" />
-    <Compile Include="questions_dice.py" />
-    <Compile Include="useless atm.py" />
-  </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
-  </PropertyGroup>
-  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
-  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
-  <!-- Uncomment the CoreCompile target to enable the Build command in
-       Visual Studio and specify your pre- and post-build commands in
-       the BeforeBuild and AfterBuild targets below. -->
-  <!--<Target Name="CoreCompile" />-->
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
+<<<<<<< HEAD
 >>>>>>> branch-r
+=======
+>>>>>>> origin/questions
+>>>>>>> questions
 </Project>
