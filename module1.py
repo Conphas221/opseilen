@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pygame, math, sys, random, time, string, inputbox, os, globalz, other
 from pygame.locals import *
 red = (255,0,0) #configures some colors
@@ -255,4 +256,20 @@ def program():
 # Starts program
 program()
 
+=======
+import pygame, math, sys, random, time, string, inputbox, os
+from pygame.locals import *
+
+class Game:
+    def __init__(self):
+        width = 800
+        higth = 600
+        resolution = (width,higth)
+        pygame.init
+     
+        self.screen = pygame.display.set_mode(resolution)
+        
+      
+        self.font = pygame.font.Font(None, 30)
+>>>>>>> branch-r
 
