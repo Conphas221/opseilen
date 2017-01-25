@@ -63,6 +63,7 @@ class MainMenu:
 
                 pygame.display.flip()
 
+
         def update(self):
             button.update(self)
             pass
@@ -110,8 +111,8 @@ def process_events():
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                         sys.exit()
-        return False
-
+                elif event.type == pygame.MOUSEMOTION:
+                        return False
 
 # Main game logic
 def program():
