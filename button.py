@@ -1,7 +1,6 @@
 # Button class to make button drawing easier in pygame.
 # Micky Langeveld
 
-# Import pygame
 import pygame
 
 # button array
@@ -21,13 +20,19 @@ class Button:
         self.frontcolor = frontcolor
         self.callback = callback
         self.font = pygame.font.Font(None, size)
-        self.image = image
+
+        if image != "":
+            self.image = pygame.image.load(image)
+        else:
+            self.image = None
+        
         self.outline = outline
+        
     def draw(self):
         textsize = self.font.size(self.text)
         
-        if len(self.image):
-            self.game.screen.blit(pygame.image.load(self.image), (self.x, self.y))
+        if self.image != None:
+            self.game.screen.blit(self.image, (self.x, self.y))
         else:
             if self.outline == True:
                 pygame.draw.rect(self.game.screen, (255,255,255), (self.x-1, self.y-1, self.width+2, self.height+2))
@@ -62,6 +67,7 @@ def draw(game, x, y, width, height, text, size, backcolor, frontcolor, callback)
 
     # add button to list
     buttons.append(_btn)
+    print(buttons)
 
 def draw_img(game, x, y, width, height, text, size, image, frontcolor, callback):
     # alloc button
