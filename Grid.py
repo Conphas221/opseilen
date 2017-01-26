@@ -21,11 +21,10 @@ class Node:
 
 # Create a Cell class
 class Cell:
-    def __init__(self, screen, baseX, baseY, x, y, color, border):
-        self.Length = 15
-        self.Width = 15
+    def __init__(self, screen, baseX, baseY, x, y, color, radius, border):
         self.X = x
         self.Y = y
+        self.Radius = radius
         self.Border = border
         self.baseX = baseX
         self.baseY = baseY
@@ -34,7 +33,7 @@ class Cell:
     def getY(self): return self.Y
 
     def draw(self, screen):
-        pygame.draw.rect(screen, black, [(self.baseX + self.X), (self.baseY + self.Y), self.Width, self.Length], self.Border)
+        pygame.draw.circle(screen, black, [int((self.baseX + self.X)), int((self.baseY - self.Y))], self.Radius, self.Border)
 
     def update(self):
         return True
@@ -49,14 +48,7 @@ class RedGrid:
 
         for row in range(1, self.GridWidth + 1):
             for column in range(1, self.GridLength + 1):
-                self.cell_list.append(Cell(screen, baseX, baseY, row * 50, column * 70, white, 3))
-
-    def get(self, x, y):
-        for pos in self.cell_list:
-            if pos.X == x * 2 and pos.Y == y * 8:
-                return pos
-
-        return False
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
 
     def draw(self, screen):
         for cells in self.cell_list:
@@ -74,14 +66,7 @@ class YellowGrid:
 
         for row in range(1, self.GridWidth + 1):
             for column in range(1, self.GridLength + 1):
-                self.cell_list.append(Cell(screen, baseX, baseY, row * 50, column * 70, white, 3))
-
-    def get(self, x, y):
-        for pos in self.cell_list:
-            if pos.X == x * 2 and pos.Y == y * 8:
-                return pos
-
-        return False
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
 
     def draw(self, screen):
         for cells in self.cell_list:
@@ -99,14 +84,7 @@ class BlueGrid:
 
         for row in range(1, self.GridWidth + 1):
             for column in range(1, self.GridLength + 1):
-                self.cell_list.append(Cell(screen, baseX, baseY, row * 50, column * 70, white, 3))
-
-    def get(self, x, y):
-        for pos in self.cell_list:
-            if pos.X == x * 2 and pos.Y == y * 8:
-                return pos
-
-        return False
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
 
     def draw(self, screen):
         for cells in self.cell_list:
@@ -124,14 +102,82 @@ class GreenGrid:
 
         for row in range(1, self.GridWidth + 1):
             for column in range(1, self.GridLength + 1):
-                self.cell_list.append(Cell(screen, baseX, baseY, row * 50, column * 70, white, 3))
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
 
-    def get(self, x, y):
-        for pos in self.cell_list:
-            if pos.X == x * 2 and pos.Y == y * 8:
-                return pos
+    def draw(self, screen):
+        for cells in self.cell_list:
+            cells.draw(screen)
 
-        return False
+    def update(self):
+        return True
+
+
+
+
+class RedGridTop:
+    def __init__(self, screen, baseX, baseY):
+        self.GridLength = 5
+        self.GridWidth = 1
+
+        self.cell_list = []
+
+        for row in range(1, self.GridWidth + 1):
+            for column in range(1, self.GridLength + 1):
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
+
+    def draw(self, screen):
+        for cells in self.cell_list:
+            cells.draw(screen)
+            
+    def update(self):
+        return True
+
+class YellowGridTop:
+    def __init__(self, screen, baseX, baseY):
+        self.GridLength = 5
+        self.GridWidth = 1
+
+        self.cell_list = []
+
+        for row in range(1, self.GridWidth + 1):
+            for column in range(1, self.GridLength + 1):
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
+
+    def draw(self, screen):
+        for cells in self.cell_list:
+            cells.draw(screen)
+
+    def update(self):
+        return True
+
+class BlueGridTop:
+    def __init__(self, screen, baseX, baseY):
+        self.GridLength = 5
+        self.GridWidth = 1
+
+        self.cell_list = []
+
+        for row in range(1, self.GridWidth + 1):
+            for column in range(1, self.GridLength + 1):
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
+
+    def draw(self, screen):
+        for cells in self.cell_list:
+            cells.draw(screen)
+
+    def update(self):
+        return True
+
+class GreenGridTop:
+    def __init__(self, screen, baseX, baseY):
+        self.GridLength = 5
+        self.GridWidth = 1
+
+        self.cell_list = []
+
+        for row in range(1, self.GridWidth + 1):
+            for column in range(1, self.GridLength + 1):
+                self.cell_list.append(Cell(screen, baseX, baseY, row * 115, column * 45, white, 5, 0))
 
     def draw(self, screen):
         for cells in self.cell_list:

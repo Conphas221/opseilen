@@ -1,11 +1,12 @@
 import pygame
 import sys
 import os
+
 from pygame.locals import *
 
 pygame.init()
 
-screen = pygame.display.set_mode((600, 600))
+screen = pygame.display.set_mode((1366, 768))
 
 # zorgt dat quit makkelijker kan worden opgeroepen
 def quitgame():
@@ -43,7 +44,7 @@ class MainMenu:
         self.font = pygame.font.Font(None, 30)
         
         #slaat background foto op
-        self.image = pygame.image.load(os.path.join('/Users/emmadrost/Documents/PROJECT2/opseilen/project2/euromast1.bmp'))
+        self.image = pygame.image.load(os.path.join('Project2/euromast1.bmp'))
 
 
     def draw(self):
@@ -77,11 +78,7 @@ class MainMenu:
 def OnStartPressed():
     print("open game")
     import main
-    import game
-    import globalz
-    import math
-    main
-    # scherm dat aantal spelers input opend.... # game.Game()
+    _game.program_loop()
     pass
 
 def OnHighscorePressed():
@@ -122,9 +119,9 @@ def mainmenu_draw():
 
 while True:
     pygame.event.pump()
-    screen.fill((0,0,0))    
+    screen.fill((255,255,255))    
     #roept background op while true
-    screen.blit(pygame.image.load(os.path.join('/Users/emmadrost/Documents/PROJECT2/opseilen/project2/euromast1.bmp')),(0, 0))
+    screen.blit(pygame.image.load(os.path.join('Project2/euromast1.bmp')),(0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -139,7 +136,7 @@ while True:
 
 
 def program():
-    mainmenu = MainMenu()
+    mainmenu = MainMenuNew()
     mainmenu.program_loop()
 
 program()

@@ -4,6 +4,7 @@ import sys
 import game
 import other
 import globalz
+import MainMenuNew
 
 
 class Empty:
@@ -24,5 +25,6 @@ _game = game.Game()
 def program():
 	#game.Game.program_loop()
 	_game.program_loop()
+	mainmenu.MainmenuNew.program_loop()
 
 program()

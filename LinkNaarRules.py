@@ -13,7 +13,7 @@ class spelregels:
 
 # Openen spelregels vanuit bestand (Emma's computer)
 
-    img1 = pygame.image.load(os.path.join('/Users/emmadrost/Documents/PROJECT2/opseilen/Project2/spelregels.bmp'))
+    img1 = pygame.image.load(os.path.join('Project2/spelregels.bmp'))
     
 
 # W en H zijn juiste groote voor openen document 600-900

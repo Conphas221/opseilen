@@ -33,12 +33,15 @@
     <Compile Include="background.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.py" />
+    <Compile Include="MainMenuNew.py" />
     <Compile Include="module1.py" />
     <Compile Include="other.py" />
     <Compile Include="player1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="player2.py" />
+    <Compile Include="player3.py" />
+    <Compile Include="player4.py" />
     <Compile Include="points.py">
       <SubType>Code</SubType>
     </Compile>
