@@ -39,7 +39,7 @@ class InstructionMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('/Users/emmadrost/Desktop/opseilen-Working-menu-2NEW/Project2/spelregels.bmp'))
+        self.Image = pygame.image.load(os.path.join('Project2\\spelregels.bmp'))
 
         self.Buttons = [Button("Back", 10, 90, lambda : MainMenu(width, height))]
     def Update(self):
@@ -62,7 +62,7 @@ class MainMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('/Users/emmadrost/Desktop/opseilen-Working-menu-2NEW/Project2/euromast1.bmp'))
+        self.Image = pygame.image.load(os.path.join('Project2\\euromast1.bmp'))
         self.Buttons = [Button("Play", 10, 10, lambda : game.Game().program_loop()),
                         Button("Instructions", 10, 50, lambda : InstructionMenu(width, height)),
                         Button("Quit", 10, 90, lambda : sys.exit())]
@@ -89,14 +89,25 @@ width = 700
 height = 800
 screen = pygame.display.set_mode((width, height))
 scene = MainMenu(width, height)
-while True:
-    pygame.event.pump()
-    screen.fill((255,255,255))    
 
-    scene = scene.Update()
-    scene.Draw(screen)
+def loop():
+    global scene
+    while True:
+        pygame.event.pump()
+        screen.fill((255,255,255))    
 
-    pygame.display.flip()
+        scene = scene.Update()
+        scene.Draw(screen)
+
+        pygame.display.flip()
+
+#def reloop():
+#    #this = sys.modules[__name__]
+#    for _ in dir():
+#        if _[0]!='_': delattr(sys.modules[__name__], n)
+#    exec(open("MainMenuNew.py").read())
+
+loop()
 
 
 def program():

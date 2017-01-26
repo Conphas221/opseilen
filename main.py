@@ -19,12 +19,12 @@ class Node:
 		self.Tail = tail 
 	
 
-_game = game.Game()
+games = game.Game()
 
 # Starts program
 def program():
 	#game.Game.program_loop()
-	_game.program_loop()
+	games.program_loop()
 	mainmenu.MainmenuNew.program_loop()
 
 program()
