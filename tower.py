@@ -32,8 +32,8 @@ class Tower_red:
 	def update(self):
 		pass
 
-	def draw(self, screen):
-		pygame.draw.rect(screen, red, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
+	def draw(self):
+		pygame.draw.rect(other.screen, red, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
 	
 class Tower_green:
 	def __init__(self, x1, y1, x2, y2):
@@ -45,8 +45,8 @@ class Tower_green:
 	def update(self):
 		pass
 
-	def draw(self, screen):
-		pygame.draw.rect(screen, green, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
+	def draw(self,):
+		pygame.draw.rect(other.screen, green, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
 		
 class Tower_blue:
 	def __init__(self, x1, y1, x2, y2):
@@ -58,8 +58,8 @@ class Tower_blue:
 	def update(self):
 		pass
 
-	def draw(self, screen):
-		pygame.draw.rect(screen, blue, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
+	def draw(self):
+		pygame.draw.rect(other.screen, blue, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
 
 class Tower_yellow:
 	def __init__(self, x1, y1, x2, y2):
@@ -71,8 +71,8 @@ class Tower_yellow:
 	def update(self):
 		pass
 
-	def draw(self, screen):
-		pygame.draw.rect(screen, yellow, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
+	def draw(self):
+		pygame.draw.rect(other.screen, yellow, (float(self.x1), float(self.y1), float(self.x2), float(self.y2)))
 
 		#def __init__(self, game):
 	#	self.game = game

@@ -3,6 +3,7 @@ import sys
 import os
 import main
 import game
+import other
 
 #from pygame.locals import *
 
@@ -101,11 +102,19 @@ def loop():
 
         pygame.display.flip()
 
-#def reloop():
-#    #this = sys.modules[__name__]
-#    for _ in dir():
-#        if _[0]!='_': delattr(sys.modules[__name__], n)
-#    exec(open("MainMenuNew.py").read())
+def reloop():
+    other.turns.player1_name = ""
+    other.turns.player2_name = ""
+    other.turns.player3_name = ""
+    other.turns.player4_name = ""
+    other.turns.player_count = 0
+    other.turns.playerz = []
+    other.turns.current_player = 0
+    other.turns.current_player_name = ""
+    
+    for _ in dir():
+        if _[0]!='_': delattr(sys.modules[__name__], _)
+    exec(open("MainMenuNew.py").read())
 
 loop()
 
