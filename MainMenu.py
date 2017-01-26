@@ -5,6 +5,7 @@ import random
 import string
 import os 
 import button
+import inputbox
 from pygame.locals import *
 
 white = (255,255,255)

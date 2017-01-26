@@ -1,7 +1,6 @@
 import pygame
 import sys
 import os
-#import game
 from pygame.locals import *
 
 pygame.init()
@@ -77,7 +76,12 @@ class MainMenu:
 # Buttons pressed
 def OnStartPressed():
     print("open game")
-    ## scherm dat aantal spelers input opend.... # game.Game()
+    import main
+    import game
+    import globalz
+    import math
+    main
+    # scherm dat aantal spelers input opend.... # game.Game()
     pass
 
 def OnHighscorePressed():
@@ -86,6 +90,15 @@ def OnHighscorePressed():
 
 def OnSpelregelsPressed():
     print("open spelregels")
+    import LinkNaarRules
+    #while True:
+     #  for LinkNaarRules in MainMenu:
+      #     if 
+       # if MainMenu:
+        #    mainmenu_draw
+        #else:
+           # LinkNaarRules
+    
     pass
 
 def OnQuitPressed():
@@ -118,7 +131,7 @@ while True:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for option in game_options:
-                option.click(event.pos)
+                    option.click(event.pos)
         elif event.type == pygame.MOUSEMOTION:
             mainmenu_draw()
             pygame.display.update()
