@@ -1,12 +1,17 @@
 import pygame
 import sys
 import os
-import game
+#import game
 from pygame.locals import *
 
 pygame.init()
 
 screen = pygame.display.set_mode((600, 600))
+
+# zorgt dat quit makkelijker kan worden opgeroepen
+def quitgame():
+    pygame.quit()
+    quit()
 
 class Empty:
         def __init__(self):
@@ -19,11 +24,6 @@ class Node:
                 self.IsEmpty = False
                 self.Value = value
                 self.Tail = tail
-
-# zorgt dat quit makkelijker kan worden opgeroepen
-def quitgame():
-    pygame.quit()
-    quit()
 
 #Main menu screen
 class MainMenu:
