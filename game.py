@@ -42,15 +42,15 @@ class Game:
         self.Is3Down = False
 
         self.Is4Down = False
-        Grid.RedGridTop = Grid.RedGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)), ((float((self.height) - (self.height / 40)))-450))
-        Grid.YellowGridTop = Grid.YellowGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 450), ((float((self.height) - (self.height / 40)))- 450))
-        Grid.BlueGridTop = Grid.BlueGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)- 225), ((float((self.height) - (self.height / 40)))- 450))
-        Grid.GreenGridTop = Grid.GreenGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 225), ((float((self.height) - (self.height / 40)))- 450))
+        self.RedGridTop = Grid.RedGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)), ((float((self.height) - (self.height / 40)))-450))
+        self.YellowGridTop = Grid.YellowGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 450), ((float((self.height) - (self.height / 40)))- 450))
+        self.BlueGridTop = Grid.BlueGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)- 225), ((float((self.height) - (self.height / 40)))- 450))
+        self.GreenGridTop = Grid.GreenGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 225), ((float((self.height) - (self.height / 40)))- 450))
 
-        Grid.RedGrid = Grid.RedGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)), (float((self.height) - (self.height / 40))))
-        Grid.YellowGrid = Grid.YellowGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)+ 450), (float((self.height) - (self.height / 40))))
-        Grid.BlueGrid = Grid.BlueGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)- 225), (float((self.height) - (self.height / 40))))
-        Grid.GreenGrid = Grid.GreenGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)+ 225), (float(self.height) - (self.height / 40)))
+        self.RedGrid = Grid.RedGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)), (float((self.height) - (self.height / 40))))
+        self.YellowGrid = Grid.YellowGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)+ 450), (float((self.height) - (self.height / 40))))
+        self.BlueGrid = Grid.BlueGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)- 225), (float((self.height) - (self.height / 40))))
+        self.GreenGrid = Grid.GreenGrid(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 115)+ 225), (float(self.height) - (self.height / 40)))
         
         # Player update key
 
@@ -61,24 +61,24 @@ class Game:
 
 
         # Create front layers
-        background.frontlayer1 = background.frontlayer1(0, (0 + float(self.height / 20)), float(((self.width / 3) / 2) - self.width * 0.002), self.height)
-        background.frontlayer2 = background.frontlayer2(float(((self.width / 3) * 2) + ((self.width / 3) / 2) + self.width * 0.002), (0 + float(self.height / 20)), float(self.width / 3), self.height)
-        background.frontlayer3 = background.frontlayer3(0, (float(self.height - (self.height / 20))) , self.width, (float(self.height / 20)))
+        self.frontlayer1 = background.frontlayer1(0, (0 + float(self.height / 20)), float(((self.width / 3) / 2) - self.width * 0.002), self.height)
+        self.frontlayer2 = background.frontlayer2(float(((self.width / 3) * 2) + ((self.width / 3) / 2) + self.width * 0.002), (0 + float(self.height / 20)), float(self.width / 3), self.height)
+        self.frontlayer3 = background.frontlayer3(0, (float(self.height - (self.height / 20))) , self.width, (float(self.height / 20)))
 
         #Create the tower
-        tower.Tower_red = tower.Tower_red(float(self.width / 3), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        tower.Tower_green = tower.Tower_green(float(self.width / 3)  + (float(self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        tower.Tower_blue = tower.Tower_blue(float((self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
-        tower.Tower_yellow = tower.Tower_yellow(float((self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
+        self.Tower_red = tower.Tower_red(float(self.width / 3), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
+        self.Tower_green = tower.Tower_green(float(self.width / 3)  + (float(self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
+        self.Tower_blue = tower.Tower_blue(float((self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
+        self.Tower_yellow = tower.Tower_yellow(float((self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 
-        player1.player_1 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
+        self.player_1 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
 							        (float(self.width * 0.015)), (float(self.width * 0.005)))
-        player2.player_2 = player2.player_2((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
+        self.player_2 = player2.player_2((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
 							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
 							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), (float(self.width * 0.005)))
-        player3.player_3 = player3.player_3((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
+        self.player_3 = player3.player_3((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
 							        (float(self.width * 0.015)), 0)
-        player4.player_4 = player4.player_4((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
+        self.player_4 = player4.player_4((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
 							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
 							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), 0)
 
@@ -87,25 +87,25 @@ class Game:
 
 	# Update logic of game
     def update(self):
-        background.frontlayer1.update()
-        background.frontlayer2.update()
-        background.frontlayer3.update()
+        self.frontlayer1.update()
+        self.frontlayer2.update()
+        self.frontlayer3.update()
 
 
-        tower.Tower_red.update()
-        tower.Tower_green.update()
-        tower.Tower_blue.update()
-        tower.Tower_yellow.update()
+        tower.Tower_red.update(self.Tower_red)
+        tower.Tower_green.update(self.Tower_green)
+        tower.Tower_blue.update(self.Tower_blue)
+        tower.Tower_yellow.update(self.Tower_yellow)
       
-        Grid.RedGrid.update()
-        Grid.YellowGrid.update()
-        Grid.BlueGrid.update()
-        Grid.GreenGrid.update()
+        Grid.RedGrid.update(self.RedGrid)
+        Grid.YellowGrid.update(self.YellowGrid)
+        Grid.BlueGrid.update(self.BlueGrid)
+        Grid.GreenGrid.update(self.GreenGrid)
 
-        Grid.RedGridTop.update()
-        Grid.YellowGridTop.update()
-        Grid.BlueGridTop.update()
-        Grid.GreenGridTop.update()
+        Grid.RedGridTop.update(self.RedGridTop)
+        Grid.YellowGridTop.update(self.YellowGridTop)
+        Grid.BlueGridTop.update(self.BlueGridTop)
+        Grid.GreenGridTop.update(self.GreenGridTop)
       
       
       
@@ -116,7 +116,7 @@ class Game:
             self.Is3Update = True
             self.Is4Update = True
 
-            player1.player_1.update(float((self.width / 3) / 2), 
+            self.player_1.update(float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -134,7 +134,7 @@ class Game:
             self.Is1Update = True
             self.Is3Update = True
             self.Is4Update = True
-            player2.player_2.update(float((self.width / 3) / 2), 
+            self.player_2.update(float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -154,7 +154,7 @@ class Game:
             self.Is1Update = True
             self.Is2Update = True
             self.Is4Update = True
-            player3.player_3.update(float((self.width / 3) / 2), 
+            self.player_3.update(float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -173,7 +173,7 @@ class Game:
             self.Is1Update = True
             self.Is2Update = True
             self.Is3Update = True
-            player4.player_4.update(float((self.width / 3) / 2), 
+            self.player_4.update(float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -201,27 +201,27 @@ class Game:
         
      
         # Draw elements
-        background.frontlayer1.draw(self.screen)
-        background.frontlayer2.draw(self.screen)
-        background.frontlayer3.draw(self.screen)
+        self.frontlayer1.draw(self.screen)
+        self.frontlayer2.draw(self.screen)
+        self.frontlayer3.draw(self.screen)
      
 
         #Draw tower 
-        tower.Tower_red.draw(self.screen)
-        tower.Tower_green.draw(self.screen)
-        tower.Tower_blue.draw(self.screen)
-        tower.Tower_yellow.draw(self.screen)
+        tower.Tower_red.draw(self.Tower_red)
+        tower.Tower_green.draw(self.Tower_green)
+        tower.Tower_blue.draw(self.Tower_blue)
+        tower.Tower_yellow.draw(self.Tower_yellow)
 
 
-        Grid.RedGrid.draw(self.screen)
-        Grid.YellowGrid.draw(self.screen)
-        Grid.BlueGrid.draw(self.screen)
-        Grid.GreenGrid.draw(self.screen)
+        Grid.RedGrid.draw()
+        Grid.YellowGrid.draw()
+        Grid.BlueGrid.draw()
+        Grid.GreenGrid.draw()
 
-        Grid.RedGridTop.draw(self.screen)
-        Grid.YellowGridTop.draw(self.screen)
-        Grid.BlueGridTop.draw(self.screen)
-        Grid.GreenGridTop.draw(self.screen)
+        Grid.RedGridTop.draw()
+        Grid.YellowGridTop.draw()
+        Grid.BlueGridTop.draw()
+        Grid.GreenGridTop.draw()
 
 
 
@@ -233,42 +233,42 @@ class Game:
             if other.turns.player1_name == "":
                 other.turns.naming(1)
             self.Is1Down = True
-            player1.player_1.draw(self.screen)
+            self.player_1.draw(self.screen)
            
         else:
             if self.Is1Down:
-                player1.player_1.draw(self.screen)
+                self.player_1.draw(self.screen)
 
         if keys[pygame.K_2] and not self.Is2Down:
             if other.turns.player2_name == "":
                 other.turns.naming(2)
             self.Is2Down = True
-            player2.player_2.draw(self.screen)
+            self.player_2.draw(self.screen)
 
         else:
             if self.Is2Down:
-                player2.player_2.draw(self.screen)
+                self.player_2.draw(self.screen)
 
         if keys[pygame.K_3] and not self.Is3Down:
             #if other.turns.player3_name == "":
             #   other.turns.naming(3)
             self.Is3Down = True
-            player3.player_3.draw(self.screen)
+            self.player_3.draw(self.screen)
 
 
         else:
             if self.Is3Down:
-                player3.player_3.draw(self.screen)
+                self.player_3.draw(self.screen)
 
         if keys[pygame.K_4] and not self.Is4Down:
             #if other.turns.player4_name == "":
             #   other.turns.naming(4)
             self.Is4Down = True
-            player4.player_4.draw(self.screen)
+            self.player_4.draw(self.screen)
 
         else:
             if self.Is4Down:
-                player4.player_4.draw(self.screen)
+                self.player_4.draw(self.screen)
 
         # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
         #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
@@ -291,19 +291,19 @@ class Game:
         button.draw(self,0.85*self.width,550,200,25,'player 2='+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,575,200,25,'player 3='+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,600,200,25,'player 4='+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
-        if player1.player_1.cnt == 15 or player2.player_2.cnt == 15 or player3.player_3.cnt == 15 or player4.player_4.cnt == 15:
+        if self.player_1.cnt == 15 or self.player_2.cnt == 15 or self.player_3.cnt == 15 or self.player_4.cnt == 15:
             self.screen.fill((255,255,255))
             button.update(self)
-            if player1.player_1.cnt == 15:
+            if self.player_1.cnt == 15:
                 button.draw(self,0.3*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player1_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif player2.player_2.cnt == 15:
+            elif self.player_2.cnt == 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player2_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif player3.player_3.cnt == 15:
+            elif self.player_3.cnt == 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif player4.player_4.cnt == 15:
+            elif self.player_4.cnt == 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
-            #import main
-            #button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: self.program_loop())
+            import MainMenuNew
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Quit the game',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
 
