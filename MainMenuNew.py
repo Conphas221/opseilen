@@ -1,6 +1,8 @@
 import pygame
 import sys
 import os
+import main
+import game
 
 #from pygame.locals import *
 
@@ -61,7 +63,7 @@ class MainMenu:
         self.Width = width
         self.Height = height        
         self.Image = pygame.image.load(os.path.join('/Users/emmadrost/Desktop/opseilen-Working-menu-2NEW/Project2/euromast1.bmp'))
-        self.Buttons = [Button("Play", 10, 10, lambda : print("play the game")),
+        self.Buttons = [Button("Play", 10, 10, lambda : game.Game().program_loop()),
                         Button("Instructions", 10, 50, lambda : InstructionMenu(width, height)),
                         Button("Quit", 10, 90, lambda : sys.exit())]
     def Update(self):
@@ -95,3 +97,10 @@ while True:
     scene.Draw(screen)
 
     pygame.display.flip()
+
+
+def program():
+    mainmenu = MainMenuNew()
+    mainmenu.program_loop()
+
+program()
