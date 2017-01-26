@@ -15,6 +15,7 @@ import button
 import inputbox
 import Grid
 
+
 class Game:
     def __init__(self):
         # Resolution
@@ -41,7 +42,6 @@ class Game:
         self.Is3Down = False
 
         self.Is4Down = False
-
         Grid.RedGridTop = Grid.RedGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)), ((float((self.height) - (self.height / 40)))-450))
         Grid.YellowGridTop = Grid.YellowGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 450), ((float((self.height) - (self.height / 40)))- 450))
         Grid.BlueGridTop = Grid.BlueGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)- 225), ((float((self.height) - (self.height / 40)))- 450))
@@ -198,6 +198,8 @@ class Game:
         # Clearing the screen
         self.screen.fill((0, 0, 0))
         button.update(self)
+        
+     
         # Draw elements
         background.frontlayer1.draw(self.screen)
         background.frontlayer2.draw(self.screen)
@@ -229,7 +231,7 @@ class Game:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_1] and not self.Is1Down:
             if other.turns.player1_name == "":
-               other.turns.naming(1)
+                other.turns.naming(1)
             self.Is1Down = True
             player1.player_1.draw(self.screen)
            
@@ -239,7 +241,7 @@ class Game:
 
         if keys[pygame.K_2] and not self.Is2Down:
             if other.turns.player2_name == "":
-               other.turns.naming(2)
+                other.turns.naming(2)
             self.Is2Down = True
             player2.player_2.draw(self.screen)
 
@@ -268,8 +270,8 @@ class Game:
             if self.Is4Down:
                 player4.player_4.draw(self.screen)
 
-       # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
-     #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
+        # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
+        #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
         button.draw(self,25,100,150,25,"open sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_sport,globalz.ori_o_sport,globalz.key_o_sport))
         button.draw(self,25,150,150,25,"open history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history))
         button.draw(self,25,200,150,25,"open entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_entert,globalz.ori_o_entert,globalz.key_o_entert))
@@ -289,6 +291,22 @@ class Game:
         button.draw(self,0.85*self.width,550,200,25,'player 2='+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,575,200,25,'player 3='+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,600,200,25,'player 4='+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
+        if player1.player_1.cnt == 15 or player2.player_2.cnt == 15 or player3.player_3.cnt == 15 or player4.player_4.cnt == 15:
+            self.screen.fill((255,255,255))
+            button.update(self)
+            if player1.player_1.cnt == 15:
+                button.draw(self,0.3*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player1_name),50,(255,255,255),(0,0,0), lambda game: None)
+            elif player2.player_2.cnt == 15:
+                button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player2_name),50,(255,255,255),(0,0,0), lambda game: None)
+            elif player3.player_3.cnt == 15:
+                button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
+            elif player4.player_4.cnt == 15:
+                button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
+            #import main
+            #button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: self.program_loop())
+            button.draw(self,0.5*self.width,0.75*self.height,500,100,'Quit the game',50,(0,0,0),(255,255,255), lambda game: sys.exit())
+
+
         # Flipping the screen
         pygame.display.flip()
 
