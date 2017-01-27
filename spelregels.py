@@ -1,0 +1,1 @@
+input(str("Regels tijdens het spel"))

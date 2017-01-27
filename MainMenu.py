@@ -5,6 +5,8 @@ import random
 import string
 import os 
 import button
+import inputbox
+import main
 from pygame.locals import *
 
 white = (255,255,255)
@@ -54,14 +56,15 @@ class MainMenu:
 
 # draw's the buttons for main menu
 
-                button.draw(self, 35, 40, 550, 35, "MAIN MENU", 28, (0, 0, 0), (255, 255, 255), lambda x: sys.exit())
-                button.draw(self, 35, 120, 200, 35, "Start Game", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
+                button.draw(self, 35, 40, 550, 35, "MAIN MENU", 28, (0, 0, 0), (255, 255, 255), lambda x: None)
+                button.draw(self, 35, 120, 200, 35, "Start Game", 28, (0, 0, 255), (255, 255, 255), lambda x: main.program())
                 button.draw(self, 35, 200, 200, 35, "High Score", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
                 button.draw(self, 35, 280, 200, 35, "Spelregels", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
                 button.draw(self, 35, 360, 200, 35, "Multiplayer", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
                 button.draw(self, 35, 440, 200, 35, "Quit Game", 28, (0, 0, 255), (255, 255, 255), lambda x: sys.exit())
 
                 pygame.display.flip()
+
 
         def update(self):
             button.update(self)
@@ -110,8 +113,8 @@ def process_events():
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                         sys.exit()
-        return False
-
+                elif event.type == pygame.MOUSEMOTION:
+                        return False
 
 # Main game logic
 def program():

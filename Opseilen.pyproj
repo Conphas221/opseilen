@@ -6,7 +6,7 @@
     <ProjectGuid>9103c85e-1b30-4a0b-a648-4c855568f497</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>main.py</StartupFile>
+    <StartupFile>MainMenuNew.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,12 +33,15 @@
     <Compile Include="background.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.py" />
+    <Compile Include="MainMenuNew.py" />
     <Compile Include="module1.py" />
     <Compile Include="other.py" />
     <Compile Include="player1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="player2.py" />
+    <Compile Include="player3.py" />
+    <Compile Include="player4.py" />
     <Compile Include="points.py">
       <SubType>Code</SubType>
     </Compile>
