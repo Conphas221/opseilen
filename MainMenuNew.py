@@ -62,10 +62,11 @@ class MainMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('Project2/euromast_illustratie_02.jpg'))
-        self.Buttons = [Button("PLAY", 250, 50, lambda : game.Game().program_loop()),
-                        Button("INSTRUCTIONS", 250, 120, lambda : InstructionMenu(width, height)),
-                        Button("QUIT", 250, 190, lambda : sys.exit())]
+        self.Image = pygame.image.load(os.path.join('euromast_illustratie_02.jpg'))
+        self.Buttons = [Button("PLAY", 250, 40, lambda : game.Game().program_loop()),
+                        Button("INSTRUCTIONS", 250, 110, lambda : InstructionMenu(width, height)),
+                        Button("HIGH SCORE", 250, 180, lambda : sys.exit()),
+                        Button("QUIT", 250, 250, lambda : sys.exit())]
     def Update(self):
         events = pygame.event.get()
         for event in events:            
@@ -78,7 +79,7 @@ class MainMenu:
         return self
 
     def Draw(self, screen):
-        screen.blit(self.Image,(0, 300))
+        screen.blit(self.Image,(0, 310))
         for button in self.Buttons:
             button.Draw(screen)
 
