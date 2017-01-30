@@ -42,6 +42,7 @@ class Game:
         self.Is3Down = False
 
         self.Is4Down = False
+
         self.RedGridTop = Grid.RedGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)), ((float((self.height) - (self.height / 40)))-450))
         self.YellowGridTop = Grid.YellowGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)+ 450), ((float((self.height) - (self.height / 40)))- 450))
         self.BlueGridTop = Grid.BlueGridTop(self, (float(((self.width / 3) + ((self.width / 3) / 8))- 57.5)- 225), ((float((self.height) - (self.height / 40)))- 450))
@@ -107,93 +108,92 @@ class Game:
         Grid.BlueGridTop.update(self.BlueGridTop)
         Grid.GreenGridTop.update(self.GreenGridTop)
       
-      
-      
-        #self.Player1.update()
+       
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_1] and not self.Is1Update:
-            self.Is2Update = True
-            self.Is3Update = True
-            self.Is4Update = True
+        if other.turns.current_player == 1:
+            if keys[pygame.K_1] and not self.Is1Update:
+                self.Is2Update = True
+                self.Is3Update = True
+                self.Is4Update = True
 
-            self.player_1.update(float((self.width / 3) / 2), 
-						        float(self.width / 3), 
-						        float(self.width / 3)  + (float(self.width / 3) / 2), 
-						        float((self.width / 3) * 2), 
-						        float((self.width / 3) / 4), 
-						        float((self.height / 17)), 
-						        float((self.width / 3) + ((self.width / 3) / 4)), 
-						        float((self.width / 3) / 2), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						        float((self.width / 3) / 8, ))
-        else:
-            if not keys[pygame.K_1]:
-                self.Is1Update = False
-        if keys[pygame.K_2] and not self.Is2Update:
-            self.Is1Update = True
-            self.Is3Update = True
-            self.Is4Update = True
-            self.player_2.update(float((self.width / 3) / 2), 
-						        float(self.width / 3), 
-						        float(self.width / 3)  + (float(self.width / 3) / 2), 
-						        float((self.width / 3) * 2), 
-						        float((self.width / 3) / 4), 
-						        float((self.height / 17)), 
-						        float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						        float((self.width / 3) / 2), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						        float((self.width / 3) / 8, ))
+                self.player_1.update(float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4)), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
+            else:
+                if not keys[pygame.K_1]:
+                    self.Is1Update = False
+        if other.turns.current_player == 2:
+            if keys[pygame.K_2] and not self.Is2Update:
+                self.Is1Update = True
+                self.Is3Update = True
+                self.Is4Update = True
+                self.player_2.update(float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
 
-        else:
-            if not keys[pygame.K_2]:
-                self.Is2Update = False
+            else:
+                if not keys[pygame.K_2]:
+                    self.Is2Update = False
+        if other.turns.current_player == 3:
+            if keys[pygame.K_3] and not self.Is3Update:
+                self.Is1Update = True
+                self.Is2Update = True
+                self.Is4Update = True
+                self.player_3.update(float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4)), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
+            else:
+                if not keys[pygame.K_3]:
+                    self.Is3Update = False
+        if other.turns.current_player == 4:
+            if keys[pygame.K_4] and not self.Is4Update:
+                self.Is1Update = True
+                self.Is2Update = True
+                self.Is3Update = True
+                self.player_4.update(float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
 
-        if keys[pygame.K_3] and not self.Is3Update:
-            self.Is1Update = True
-            self.Is2Update = True
-            self.Is4Update = True
-            self.player_3.update(float((self.width / 3) / 2), 
-						        float(self.width / 3), 
-						        float(self.width / 3)  + (float(self.width / 3) / 2), 
-						        float((self.width / 3) * 2), 
-						        float((self.width / 3) / 4), 
-						        float((self.height / 17)), 
-						        float((self.width / 3) + ((self.width / 3) / 4)), 
-						        float((self.width / 3) / 2), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						        float((self.width / 3) / 8, ))
-        else:
-            if not keys[pygame.K_3]:
-                self.Is3Update = False
-
-        if keys[pygame.K_4] and not self.Is4Update:
-            self.Is1Update = True
-            self.Is2Update = True
-            self.Is3Update = True
-            self.player_4.update(float((self.width / 3) / 2), 
-						        float(self.width / 3), 
-						        float(self.width / 3)  + (float(self.width / 3) / 2), 
-						        float((self.width / 3) * 2), 
-						        float((self.width / 3) / 4), 
-						        float((self.height / 17)), 
-						        float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						        float((self.width / 3) / 2), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						        float((self.width / 3) / 8, ))
-
-        else:
-            if not keys[pygame.K_4]:
-                self.Is4Update = False
+            else:
+                if not keys[pygame.K_4]:
+                    self.Is4Update = False
 
         if keys[pygame.K_n]:
             other.turns.turn()
 
-               
-
+ 
     def draw(self):
         # Clearing the screen
         self.screen.fill((0, 0, 0))
@@ -227,11 +227,11 @@ class Game:
 
 
 
-# Draw Players
+## Draw Players
         keys = pygame.key.get_pressed()
         if keys[pygame.K_1] and not self.Is1Down:
             if other.turns.player1_name == "":
-                other.turns.naming(1)
+               other.turns.naming(1)
             self.Is1Down = True
             self.player_1.draw(self.screen)
            
@@ -250,8 +250,8 @@ class Game:
                 self.player_2.draw(self.screen)
 
         if keys[pygame.K_3] and not self.Is3Down:
-            #if other.turns.player3_name == "":
-            #   other.turns.naming(3)
+            if other.turns.player3_name == "":
+               other.turns.naming(3)
             self.Is3Down = True
             self.player_3.draw(self.screen)
 
@@ -261,14 +261,16 @@ class Game:
                 self.player_3.draw(self.screen)
 
         if keys[pygame.K_4] and not self.Is4Down:
-            #if other.turns.player4_name == "":
-            #   other.turns.naming(4)
+            if other.turns.player4_name == "":
+               other.turns.naming(4)
             self.Is4Down = True
             self.player_4.draw(self.screen)
 
         else:
             if self.Is4Down:
                 self.player_4.draw(self.screen)
+
+
 
         # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
         #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
@@ -287,11 +289,11 @@ class Game:
             button.draw(self,0.85*self.width,450,150,25,"Your answer is wrong!",20,(0,0,0),(255,255,255), lambda game: None)
         button.draw(self,0.85*self.width,100,30,25,str(other.dice.dice_result),20,(153,0,153),(255,255,0), lambda game: None)
         button.draw(self,0.85*self.width,500,200,25,str(other.turns.current_player_name),20,(0,0,0),(255,255,255), lambda game: None)
-        button.draw(self,0.85*self.width,525,200,25,'player 1='+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,550,200,25,'player 2='+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,575,200,25,'player 3='+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,600,200,25,'player 4='+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
-        if self.player_1.cnt == 15 or self.player_2.cnt == 15 or self.player_3.cnt == 15 or self.player_4.cnt == 15:
+        button.draw(self,0.85*self.width,525,200,25,'player 1 = '+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,550,200,25,'player 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,575,200,25,'player 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,600,200,25,'player 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
+        if self.player_1.cnt >= 15 or self.player_2.cnt >= 15 or self.player_3.cnt >= 15 or self.player_4.cnt >= 15:
             self.screen.fill((255,255,255))
             button.update(self)
             if self.player_1.cnt == 15:

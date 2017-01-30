@@ -41,15 +41,12 @@ class termanation_screen:
 
         #Draw message
         def draw(self):
-            self.screen.fill(100, 100, 225)
+            self.screen.fill(0, 0, 0)
             text = self.font.render("Game over, thanks for playing!")
-            self.screen.blit(text, self.width/2, self.height/2)
-
-            #bg_image = pygame.image.load("...")
-            #self.screen.blit(bg_image, self.width/ ., self.height * ..)
-
-            #button stuff
-            #..
+            textrect = text.get_rect()
+            textrect.centerx = self.width/2
+            textrect.centery = self.height/2
+            self.screen.blit(text, textrect)
 
             pygame.display.flip()
         
@@ -61,6 +58,41 @@ class termanation_screen:
                 self.update()
                 self.draw()
 
+class Side:
+    def __init__(self, color):
+            self.Color = color
+    def draw(self, screen, x1, y1, x2, y2):
+            pygame.draw.rect(screen, self.Color, (int(x1), int(y1), int(x2), int(y2)))
+
+
+class frontlayer1:
+    def __init__(self, x1, y1, x2, y2):
+            self.x1 = x1
+            self.y1 = y1
+            self.x2 = x2
+            self.y2 = y2
+
+
+    def update(self):
+            return True
+
+    def draw(self, screen):
+            pygame.draw.rect(screen, white, (int(self.x1), int(self.y1), int(self.x2), int(self.y2)))
+
+
+class frontlayer2:
+    def __init__(self, x1, y1, x2, y2):
+            self.x1 = x1
+            self.y1 = y1
+            self.x2 = x2
+            self.y2 = y2
+
+
+    def update(self):
+            return True
+
+    def draw(self, screen):
+            pygame.draw.rect(screen, white, (int(self.x1), int(self.y1), int(self.x2), int(self.y2)))
 
 def process_events():
         for event in pygame.event.get():
@@ -88,5 +120,8 @@ program()
 #	        text = font.render("Congratulations!  You won!", 1, white)
 #    else:
 #	        text = font.render("You lost!", 1, white)	
-#    screen.blit(text, area.width/2, area.height/2)
+#    textrect = text.get_rect()
+#    textrect.centerx = area.width/2
+#    textrect.centery = area.height/2
+#    screen.blit(text, textrect)
 #    pygame.display.flip()
