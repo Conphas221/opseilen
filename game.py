@@ -72,10 +72,30 @@ class Game:
         self.Tower_yellow = tower.Tower_yellow(float((self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 
         self.player_1 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
-							        (float(self.width * 0.015)), (float(self.width * 0.005)))
+							        (float(self.width * 0.015)), (float(self.width * 0.005)),float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4)), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
         self.player_2 = player2.player_2((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
 							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
-							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), (float(self.width * 0.005)))
+							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), (float(self.width * 0.005)),float((self.width / 3) / 2), 
+						            float(self.width / 3), 
+						            float(self.width / 3)  + (float(self.width / 3) / 2), 
+						            float((self.width / 3) * 2), 
+						            float((self.width / 3) / 4), 
+						            float((self.height / 17)), 
+						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						            float((self.width / 3) / 2), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						            float((self.width / 3) / 8, ))
         self.player_3 = player3.player_3((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
 							        (float(self.width * 0.015)), 0)
         self.player_4 = player4.player_4((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
@@ -115,18 +135,15 @@ class Game:
                 self.Is2Update = True
                 self.Is3Update = True
                 self.Is4Update = True
+                if keys[pygame.K_UP]:
+                    self.player_1.up()
+                elif keys[pygame.K_DOWN]:
+                    self.player_1.down()
+                elif keys[pygame.K_LEFT]:
+                    self.player_1.left()
+                elif keys[pygame.K_RIGHT]:
+                    self.player_1.right()
 
-                self.player_1.update(float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4)), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
             else:
                 if not keys[pygame.K_1]:
                     self.Is1Update = False
@@ -135,17 +152,14 @@ class Game:
                 self.Is1Update = True
                 self.Is3Update = True
                 self.Is4Update = True
-                self.player_2.update(float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
+                if keys[pygame.K_UP]:
+                    self.player_2.up()
+                elif keys[pygame.K_DOWN]:
+                    self.player_2.down()
+                elif keys[pygame.K_LEFT]:
+                    self.player_2.left()
+                elif keys[pygame.K_RIGHT]:
+                    self.player_2.right()
 
             else:
                 if not keys[pygame.K_2]:
@@ -269,6 +283,7 @@ class Game:
         else:
             if self.Is4Down:
                 self.player_4.draw(self.screen)
+
 
 
 
