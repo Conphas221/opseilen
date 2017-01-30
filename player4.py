@@ -6,10 +6,11 @@ import other
 import globalz
 
 class player_4:
-	def __init__(self, x, y, r, fill):
+	def __init__(self, x, y, x2, y2, fill):
 		self.x = x
 		self.y = y
-		self.r = r
+		self.x2 = x2
+		self.y2 = y2
 		self.fill = fill
 
 	IsWDown = False
