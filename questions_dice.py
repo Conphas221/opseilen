@@ -4,13 +4,16 @@ pygame.init() # makes pygame work
 width = 800
 higth = 600
 resolution = (width,higth)
-red = (255,0,0) #configures some colors
-green = (0,255,0)
-blue = (0,0,255)
+
+							#old colors
+red = (255, 99, 71) 		#(255,0,0) # Configures some colors
+green = (50, 205, 50) 		#(0,255,0)
+blue =  (65, 105, 225) 		#(0,0,255)
 white = (255,255,255)
 black = (0,0,0)
-yellow = (255,255,0)
-purple = (153,0,153)
+yellow = (230, 230, 0)
+purple = (95,158,160)       #purple = (153,0,153)
+
 font = pygame.font.Font(None, 30)
 largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
