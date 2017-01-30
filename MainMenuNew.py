@@ -3,11 +3,10 @@ import sys
 import os
 import main
 import game
-import other
 
 #from pygame.locals import *
 
-#NO GGLOBAL VARIABLES
+#NO GLOBAL VARIABLES
 
 class Button:
     def __init__(self, text, x, y, action):
@@ -25,9 +24,9 @@ class Button:
         for event in events:
             if event.type == pygame.MOUSEMOTION:
                 if self.Rect.collidepoint(event.pos):                    
-                    self.Text = (pygame.font.Font(None, 30)).render(self.DefaultText, 1, (255,255,0))            
+                    self.Text = (pygame.font.Font(None, 40)).render(self.DefaultText, 1, (255, 190, 0))            
                 else:
-                    self.Text = (pygame.font.Font(None, 30)).render(self.DefaultText, 1, (130, 130, 130))
+                    self.Text = (pygame.font.Font(None, 40)).render(self.DefaultText, 1, (130, 130, 130))
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if self.Rect.collidepoint(event.pos):                    
                     return self.Action()
@@ -40,9 +39,9 @@ class InstructionMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('Project2\\spelregels.bmp'))
+        self.Image = pygame.image.load(os.path.join('Project2/spelregels.bmp'))
 
-        self.Buttons = [Button("Back", 10, 90, lambda : MainMenu(width, height))]
+        self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]
     def Update(self):
         events = pygame.event.get()
         for event in events:            
@@ -63,10 +62,10 @@ class MainMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('Project2\\euromast1.bmp'))
-        self.Buttons = [Button("Play", 10, 10, lambda : game.Game().program_loop()),
-                        Button("Instructions", 10, 50, lambda : InstructionMenu(width, height)),
-                        Button("Quit", 10, 90, lambda : sys.exit())]
+        self.Image = pygame.image.load(os.path.join('Project2/euromast_illustratie_02.jpg'))
+        self.Buttons = [Button("PLAY", 250, 50, lambda : game.Game().program_loop()),
+                        Button("INSTRUCTIONS", 250, 120, lambda : InstructionMenu(width, height)),
+                        Button("QUIT", 250, 190, lambda : sys.exit())]
     def Update(self):
         events = pygame.event.get()
         for event in events:            
@@ -79,7 +78,7 @@ class MainMenu:
         return self
 
     def Draw(self, screen):
-        screen.blit(self.Image,(150, 50))
+        screen.blit(self.Image,(0, 300))
         for button in self.Buttons:
             button.Draw(screen)
 
@@ -90,17 +89,14 @@ width = 700
 height = 800
 screen = pygame.display.set_mode((width, height))
 scene = MainMenu(width, height)
+while True:
+    pygame.event.pump()
+    screen.fill((255,255,255))    
 
-def loop():
-    global scene
-    while True:
-        pygame.event.pump()
-        screen.fill((255,255,255))    
+    scene = scene.Update()
+    scene.Draw(screen)
 
-        scene = scene.Update()
-        scene.Draw(screen)
-
-        pygame.display.flip()
+    pygame.display.flip()
 
 def reloop():
     other.turns.player1_name = ""
