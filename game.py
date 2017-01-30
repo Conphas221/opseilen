@@ -8,7 +8,6 @@ import player1
 import player2
 import player3
 import player4
-import points
 import other
 import globalz
 import button
@@ -285,17 +284,34 @@ class Game:
         #button.draw(self,25,350,150,25,"mc entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_entert,globalz.ori_mc_entert,globalz.ans_mc_entert))
         #button.draw(self,25,400,150,25,"mc history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_history,globalz.ori_mc_history,globalz.ans_mc_history))
         #button.draw(self,25,450,150,25,"mc geograhpy",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
-        button.draw(self,25,500,150,25,"roll the dice",20,(153,0,153),(255,255,0), lambda game: other.dice.dice_roll())
+        # changed backgroundcolor of dice
+        button.draw(self,25,550,165,25,"ROLL THE DICE",20,(95,158,160),(255,255,255), lambda game: other.dice.dice_roll())
+        # rect to clarify where the answer of questions is shown 
+        button.draw(self,0.85*self.width,275,200,25,"RIGHT OR WRONG ANSWER?",20,(0,0,0),(255,255,255), lambda game: None)
         if other.questions.correct == 1:
-            button.draw(self,0.85*self.width,450,150,25,"Your answer is correct!",20,(0,0,0),(255,255,255), lambda game: None)
+            button.draw(self,0.85*self.width,300,200,25,"YOUR ANSWER IS CORRECT!",20,(124,252,0),(0,0,0), lambda game: None)
         elif other.questions.correct == 0:
-            button.draw(self,0.85*self.width,450,150,25,"Your answer is wrong!",20,(0,0,0),(255,255,255), lambda game: None)
-        button.draw(self,0.85*self.width,100,30,25,str(other.dice.dice_result),20,(153,0,153),(255,255,0), lambda game: None)
-        button.draw(self,0.85*self.width,500,200,25,str(other.turns.current_player_name),20,(0,0,0),(255,255,255), lambda game: None)
-        button.draw(self,0.85*self.width,525,200,25,'player 1 = '+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,550,200,25,'player 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,575,200,25,'player 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,600,200,25,'player 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
+            button.draw(self,0.85*self.width,300,200,25,"YOUR ANSWER IS WRONG",20,(255,0,0),(0,0,0), lambda game: None)
+
+
+        #displays the result of the dice roll
+        button.draw(self,25,600,150,25,str(other.dice.dice_result),20,(95,158,160),(255,255,255), lambda game: None)
+       
+
+        #displays the name of the current player
+        button.draw(self,0.85*self.width,70,200,30,"CURRENT PLAYER IS",25,(0,0,0),(255,255,255), lambda game: None)
+        button.draw(self,0.85*self.width,100,200,30,str(other.turns.current_player_name),25,(0,0,0),(255,255,255), lambda game: None)
+
+
+        #shows the name each player has entered for themselves
+        button.draw(self,0.85*self.width,525,200,25,'PLAYER 1 = '+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,550,200,25,'PLAYER 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,575,200,25,'PLAYER 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,600,200,25,'PLAYER 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
+       
+
+
+        #checks whether a player has reached the finish, and if so, draws the termination screen and displays the name of the winner
         if self.player_1.cnt >= 15 or self.player_2.cnt >= 15 or self.player_3.cnt >= 15 or self.player_4.cnt >= 15:
             self.screen.fill((255,255,255))
             button.update(self)
@@ -307,9 +323,14 @@ class Game:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
             elif self.player_4.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
+           
+            #These are the buttons on the termination screen
             import MainMenuNew
-            button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
-            button.draw(self,0.5*self.width,0.75*self.height,500,100,'Quit the game',50,(0,0,0),(255,255,255), lambda game: sys.exit())
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
+            button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
+
+   
+            #checks whether the settings menu has been requested by the user, and if so, opens it.
         if self.smenu_active:
             self.screen.fill((255,255,255))
             button.update(self)

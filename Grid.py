@@ -1,11 +1,11 @@
 import pygame, math, sys, other
 
-red = (255,0,0) #configures some colors
-green = (0,255,0)
-blue = (0,0,255)
+red = (255, 99, 71) #configures some colors
+green = (50, 205, 50)
+blue = (65, 105, 225)
 white = (255,255,255)
 black = (0,0,0)
-yellow = (255,255,0)
+yellow = (230, 230, 0)
 
 
 class Empty:
