@@ -3,6 +3,7 @@ import sys
 import os
 import main
 import game
+import other
 
 #from pygame.locals import *
 
@@ -62,7 +63,7 @@ class MainMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('Project2/euromast_illustratie_02.jpg'))
+        self.Image = pygame.image.load(os.path.join('Project2\\euromast_illustratie_02.jpg'))
         self.Buttons = [Button("PLAY", 250, 50, lambda : game.Game().program_loop()),
                         Button("INSTRUCTIONS", 250, 120, lambda : InstructionMenu(width, height)),
                         Button("QUIT", 250, 190, lambda : sys.exit())]
@@ -107,7 +108,7 @@ def reloop():
     other.turns.playerz = []
     other.turns.current_player = 0
     other.turns.current_player_name = ""
-    
+    other.turns.match_started = False
     for _ in dir():
         if _[0]!='_': delattr(sys.modules[__name__], _)
     exec(open("MainMenuNew.py").read())

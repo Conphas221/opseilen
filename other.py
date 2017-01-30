@@ -15,7 +15,6 @@ font = pygame.font.Font(None, 20)
 largefont = pygame.font.Font(None, 90)
 screen = pygame.display.set_mode(resolution) #sets the screen dimensions
 pygame.display.set_caption('Opseilen!')
-#correct = 2
 
 
 
@@ -32,6 +31,7 @@ class turns:
     playerz = []
     current_player = 0
     current_player_name = ""
+    match_started = False
 
     def turn():
         if turns.current_player < turns.player_count:
@@ -41,6 +41,17 @@ class turns:
             turns.current_player = 1
         turns.current_player_name = turns.playerz[turns.current_player-1]
         time.sleep(0.15)
+    def firstturn(n):
+        if n == 1:
+            turns.current_player = 0
+        if n == 2:
+            turns.current_player = 1
+        if n == 3:
+            turns.current_player = 2
+        if n == 4:
+            turns.current_player = 3
+        turns.turn()
+        turns.match_started = True
 
     def naming(nr):
         if nr == 1:
@@ -68,6 +79,7 @@ class turns:
             turns.playerz.extend(list_player4name)
             #turns.current_player = 4
 
+        
 #class Rects():
     
 #    def __init__(self,game):

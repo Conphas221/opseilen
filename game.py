@@ -83,7 +83,8 @@ class Game:
 							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
 							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), 0)
 
-    
+        self.smenu_active = False
+        
         
 
 	# Update logic of game
@@ -111,7 +112,7 @@ class Game:
        
         keys = pygame.key.get_pressed()
         if other.turns.current_player == 1:
-            if keys[pygame.K_1] and not self.Is1Update:
+            if not self.Is1Update:
                 self.Is2Update = True
                 self.Is3Update = True
                 self.Is4Update = True
@@ -131,7 +132,7 @@ class Game:
                 if not keys[pygame.K_1]:
                     self.Is1Update = False
         if other.turns.current_player == 2:
-            if keys[pygame.K_2] and not self.Is2Update:
+            if not self.Is2Update:
                 self.Is1Update = True
                 self.Is3Update = True
                 self.Is4Update = True
@@ -151,7 +152,7 @@ class Game:
                 if not keys[pygame.K_2]:
                     self.Is2Update = False
         if other.turns.current_player == 3:
-            if keys[pygame.K_3] and not self.Is3Update:
+            if not self.Is3Update:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is4Update = True
@@ -170,7 +171,7 @@ class Game:
                 if not keys[pygame.K_3]:
                     self.Is3Update = False
         if other.turns.current_player == 4:
-            if keys[pygame.K_4] and not self.Is4Update:
+            if not self.Is4Update:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is3Update = True
@@ -274,14 +275,16 @@ class Game:
 
         # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
         #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
-        button.draw(self,25,100,150,25,"open sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_sport,globalz.ori_o_sport,globalz.key_o_sport))
-        button.draw(self,25,150,150,25,"open history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history))
-        button.draw(self,25,200,150,25,"open entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_entert,globalz.ori_o_entert,globalz.key_o_entert))
-        button.draw(self,25,250,150,25,"open geography",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo))
-        button.draw(self,25,300,150,25,"mc sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_sport,globalz.ori_mc_sport,globalz.ans_mc_sport))
-        button.draw(self,25,350,150,25,"mc entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_entert,globalz.ori_mc_entert,globalz.ans_mc_entert))
-        button.draw(self,25,400,150,25,"mc history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_history,globalz.ori_mc_history,globalz.ans_mc_history))
-        button.draw(self,25,450,150,25,"mc geograhpy",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
+        #button.draw(self,25,100,150,25,"open sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_sport,globalz.ori_o_sport,globalz.key_o_sport))
+        button.draw(self,25,100,150,25,"open settings menu",20,(0,0,0),(255,255,255), lambda game: self.smenu())
+        if not other.turns.match_started:  
+            button.draw(self,25,150,150,25,"Player 1 goes first",20,(0,0,0),(255,255,255), lambda game: other.turns.firstturn(1))
+            button.draw(self,25,200,150,25,"Player 2 goes first",20,(0,0,0),(255,255,255), lambda game: other.turns.firstturn(2))
+            button.draw(self,25,250,150,25,"Player 3 goes first",20,(0,0,0),(255,255,255), lambda game: other.turns.firstturn(3))
+            button.draw(self,25,300,150,25,"Player 4 goes first",20,(0,0,0),(255,255,255), lambda game: other.turns.firstturn(4))
+        #button.draw(self,25,350,150,25,"mc entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_entert,globalz.ori_mc_entert,globalz.ans_mc_entert))
+        #button.draw(self,25,400,150,25,"mc history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_history,globalz.ori_mc_history,globalz.ans_mc_history))
+        #button.draw(self,25,450,150,25,"mc geograhpy",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
         button.draw(self,25,500,150,25,"roll the dice",20,(153,0,153),(255,255,0), lambda game: other.dice.dice_roll())
         if other.questions.correct == 1:
             button.draw(self,0.85*self.width,450,150,25,"Your answer is correct!",20,(0,0,0),(255,255,255), lambda game: None)
@@ -296,21 +299,38 @@ class Game:
         if self.player_1.cnt >= 15 or self.player_2.cnt >= 15 or self.player_3.cnt >= 15 or self.player_4.cnt >= 15:
             self.screen.fill((255,255,255))
             button.update(self)
-            if self.player_1.cnt == 15:
+            if self.player_1.cnt >= 15:
                 button.draw(self,0.3*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player1_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif self.player_2.cnt == 15:
+            elif self.player_2.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player2_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif self.player_3.cnt == 15:
+            elif self.player_3.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
-            elif self.player_4.cnt == 15:
+            elif self.player_4.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
             import MainMenuNew
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Quit the game',50,(0,0,0),(255,255,255), lambda game: sys.exit())
+        if self.smenu_active:
+            self.screen.fill((255,255,255))
+            button.update(self)
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'Start background music',50,(0,0,0),(255,255,255), lambda game: other.music())
+            button.draw(self,0.5*self.width,0.75*self.height,500,100,'Stop background music',50,(0,0,0),(255,255,255), lambda game: other.stop_music())
+            button.draw(self,0.3*self.width,0.25*self.height,500,100,'back',50,(0,0,0),(255,255,255), lambda game: self.smenu())
 
 
         # Flipping the screen
         pygame.display.flip()
+
+        
+
+
+
+            
+    def smenu(self):
+        if self.smenu_active:
+            self.smenu_active = False
+        elif not self.smenu_active:
+            self.smenu_active = True
 
         # Actual loop
 
