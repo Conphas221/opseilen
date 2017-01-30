@@ -274,25 +274,34 @@ class Game:
 
         # (game, x, y, width, height, text, size, backcolor, frontcolor, callback):
         #  button.draw(game, 45, game.height * 0.9, 100, 32, "Start", 20, (0,0,0), (255,255,255), lambda game: start_chosen(game, 1))
-        button.draw(self,25,100,150,25,"open sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_sport,globalz.ori_o_sport,globalz.key_o_sport))
-        button.draw(self,25,150,150,25,"open history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history))
-        button.draw(self,25,200,150,25,"open entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_entert,globalz.ori_o_entert,globalz.key_o_entert))
-        button.draw(self,25,250,150,25,"open geography",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo))
-        button.draw(self,25,300,150,25,"mc sport",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_sport,globalz.ori_mc_sport,globalz.ans_mc_sport))
-        button.draw(self,25,350,150,25,"mc entertainment",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_entert,globalz.ori_mc_entert,globalz.ans_mc_entert))
-        button.draw(self,25,400,150,25,"mc history",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_history,globalz.ori_mc_history,globalz.ans_mc_history))
-        button.draw(self,25,450,150,25,"mc geograhpy",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
-        button.draw(self,25,500,150,25,"roll the dice",20,(153,0,153),(255,255,0), lambda game: other.dice.dice_roll())
+        button.draw(self,25,100,165,25,"OPEN SPORT",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_sport,globalz.ori_o_sport,globalz.key_o_sport))
+        button.draw(self,25,150,165,25,"OPEN HISTORY",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history))
+        button.draw(self,25,200,165,25,"OPEN ENTERTAINMENT",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_entert,globalz.ori_o_entert,globalz.key_o_entert))
+        button.draw(self,25,250,165,25,"OPEN GEOGRAPHY",20,(0,0,0),(255,255,255), lambda game: other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo))
+        button.draw(self,25,300,165,25,"MC. SPORT",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_sport,globalz.ori_mc_sport,globalz.ans_mc_sport))
+        button.draw(self,25,350,165,25,"MC. ENTERTAINMENT",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_entert,globalz.ori_mc_entert,globalz.ans_mc_entert))
+        button.draw(self,25,400,165,25,"MC. HISTORY",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_history,globalz.ori_mc_history,globalz.ans_mc_history))
+        button.draw(self,25,450,165,25,"MC. GEORAPHY",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
+        
+        # changed backgroundcolor of dice
+        button.draw(self,25,550,165,25,"ROLL THE DICE",20,(95,158,160),(255,255,255), lambda game: other.dice.dice_roll())
+        # rect to clarify where the answer of questions is shown 
+        button.draw(self,0.85*self.width,275,200,25,"RIGHT OR WRONG ANSWER?",20,(0,0,0),(255,255,255), lambda game: None)
+        
         if other.questions.correct == 1:
-            button.draw(self,0.85*self.width,450,150,25,"Your answer is correct!",20,(0,0,0),(255,255,255), lambda game: None)
+            button.draw(self,0.85*self.width,300,200,25,"YOUR ANSWER IS CORRECT!",20,(124,252,0),(0,0,0), lambda game: None)
         elif other.questions.correct == 0:
-            button.draw(self,0.85*self.width,450,150,25,"Your answer is wrong!",20,(0,0,0),(255,255,255), lambda game: None)
-        button.draw(self,0.85*self.width,100,30,25,str(other.dice.dice_result),20,(153,0,153),(255,255,0), lambda game: None)
+            button.draw(self,0.85*self.width,300,200,25,"YOUR ANSWER IS WRONG",20,(255,0,0),(0,0,0), lambda game: None)
+        
+        # changed color of dice/ place of dice voor betere overzichtelijkheid
+        button.draw(self,25,600,150,25,str(other.dice.dice_result),20,(95,158,160),(255,255,255), lambda game: None)
+        
+        button.draw(self,0.85*self.width,475,200,25,"TURN OF PLAYER:",20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,500,200,25,str(other.turns.current_player_name),20,(0,0,0),(255,255,255), lambda game: None)
-        button.draw(self,0.85*self.width,525,200,25,'player 1 = '+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,550,200,25,'player 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,575,200,25,'player 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
-        button.draw(self,0.85*self.width,600,200,25,'player 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,525,200,25,'PLAYER 1 = '+str(other.turns.player1_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,550,200,25,'PLAYER 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,575,200,25,'PLAYER 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
+        button.draw(self,0.85*self.width,600,200,25,'PLAYER 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
         if self.player_1.cnt >= 15 or self.player_2.cnt >= 15 or self.player_3.cnt >= 15 or self.player_4.cnt >= 15:
             self.screen.fill((255,255,255))
             button.update(self)
@@ -305,8 +314,8 @@ class Game:
             elif self.player_4.cnt == 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
             import MainMenuNew
-            button.draw(self,0.1*self.width,0.75*self.height,500,100,'Return to the Main Menu',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
-            button.draw(self,0.5*self.width,0.75*self.height,500,100,'Quit the game',50,(0,0,0),(255,255,255), lambda game: sys.exit())
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
+            button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
 
         # Flipping the screen
