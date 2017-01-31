@@ -9,6 +9,7 @@ import random
 import globalz
 empty = tower.Empty()
 rec = pygame.draw.rect(globalz.screen,globalz.white,(25,600,116,116))
+
 diceimages = [pygame.image.load(os.path.join('Project2/1.bmp')),
               pygame.image.load(os.path.join('Project2/2.bmp')),
               pygame.image.load(os.path.join('Project2/3.bmp')),

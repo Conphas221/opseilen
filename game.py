@@ -19,7 +19,6 @@ class Game:
         self.height = 768
         self.resolution = (self.width,self.height)
         #self.fullscreen = pygame.FULLSCREEN
-        self.anima = anim.Animation(1,2,self)
         pygame.init() # Makes pygame work
 
         # Set the resolution
@@ -119,6 +118,10 @@ class Game:
 						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
 						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
 
+        #Create Dice
+        self.anima = anim.Animation(1,2,self)
+        
+        #smenu variable
         self.smenu_active = False
         
         
@@ -130,10 +133,7 @@ class Game:
         self.frontlayer3.update()
 
 
-        while self.ina == 0:
-            other.dice.dice_roll()
-            self.ina += 1
-        self.anima.update()
+        
         tower.Tower_red.update(self.Tower_red)
         tower.Tower_green.update(self.Tower_green)
         tower.Tower_blue.update(self.Tower_blue)
@@ -149,7 +149,11 @@ class Game:
         Grid.BlueGridTop.update(self.BlueGridTop)
         Grid.GreenGridTop.update(self.GreenGridTop)
       
-       
+        while self.ina == 0:
+            other.dice.dice_roll()
+            self.ina += 1
+        self.anima.update()
+
         keys = pygame.key.get_pressed()
         if other.turns.current_player == 1:
             if not self.Is1Update:
@@ -345,7 +349,9 @@ class Game:
         button.draw(self,0.85*self.width,550,200,25,'PLAYER 2 = '+str(other.turns.player2_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,575,200,25,'PLAYER 3 = '+str(other.turns.player3_name),20,(255,255,255),(0,0,0), lambda game: None)
         button.draw(self,0.85*self.width,600,200,25,'PLAYER 4 = '+str(other.turns.player4_name),20,(255,255,255),(0,0,0), lambda game: None)
-       
+        
+        # Dice animation
+        self.anima.Draw(self.screen)       
 
 
         #checks whether a player has reached the finish, and if so, draws the termination screen and displays the name of the winner
@@ -375,7 +381,6 @@ class Game:
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Stop background music',50,(0,0,0),(255,255,255), lambda game: other.stop_music())
             button.draw(self,0.3*self.width,0.25*self.height,500,100,'back',50,(0,0,0),(255,255,255), lambda game: self.smenu())
 
-        self.anima.Draw(self.screen)
         # Flipping the screen
         pygame.display.flip()
 
