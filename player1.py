@@ -293,8 +293,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -312,8 +312,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -331,8 +331,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -350,8 +350,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -392,8 +392,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -411,8 +411,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -430,8 +430,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -449,8 +449,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+								self.y = self.y + (int(self.y_pos))
+								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -473,7 +473,7 @@ class player_1:
 
 
 
-	def left(self):
+	def right(self):
 		keys = pygame.key.get_pressed()
 		
 
@@ -503,9 +503,10 @@ class player_1:
 					if other.questions.player1_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x < self.left_end):
+								self.x = self.right_end + (int(self.x_pos))
+							else:
+								self.x = self.x - (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -522,9 +523,10 @@ class player_1:
 					if other.questions.player2_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x < self.left_end):
+								self.x = self.right_end + (int(self.x_pos))
+							else:
+								self.x = self.x - (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -541,9 +543,10 @@ class player_1:
 					if other.questions.player3_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x < self.left_end):
+								self.x = self.right_end + (int(self.x_pos))
+							else:
+								self.x = self.x - (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -560,9 +563,10 @@ class player_1:
 					if other.questions.player4_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x < self.left_end):
+								self.x = self.right_end + (int(self.x_pos))
+							else:
+								self.x = self.x - (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -612,9 +616,10 @@ class player_1:
 					if other.questions.player1_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -631,9 +636,10 @@ class player_1:
 					if other.questions.player2_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -650,9 +656,10 @@ class player_1:
 					if other.questions.player3_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -669,9 +676,10 @@ class player_1:
 					if other.questions.player4_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -687,7 +695,7 @@ class player_1:
 
 
 
-	def right(self):
+	def left(self):
 		keys = pygame.key.get_pressed()
 		#asks a question when the player moves right on the tower
 		if (self.cnt < 11) and (self.cnt > 0):
@@ -715,9 +723,10 @@ class player_1:
 					if other.questions.player1_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -734,9 +743,10 @@ class player_1:
 					if other.questions.player2_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -753,9 +763,10 @@ class player_1:
 					if other.questions.player3_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -772,9 +783,10 @@ class player_1:
 					if other.questions.player4_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.left_end - (int(self.x_pos))
+							else:
+								self.x = self.x + (int(self.x_pos))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -826,9 +838,10 @@ class player_1:
 					if other.questions.player1_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.x - (3*(int(self.whole_side)))
+							else:
+								self.x = self.x + (int(self.whole_side))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -845,9 +858,10 @@ class player_1:
 					if other.questions.player2_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.x - (3*(int(self.whole_side)))
+							else:
+								self.x = self.x + (int(self.whole_side))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -864,9 +878,10 @@ class player_1:
 					if other.questions.player3_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.x - (3*(int(self.whole_side)))
+							else:
+								self.x = self.x + (int(self.whole_side))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -883,9 +898,10 @@ class player_1:
 					if other.questions.player4_correct == 1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
-								self.IsWDown = True
-								self.y = self.y - (int(self.y_pos))
-								self.cnt = self.cnt + 1
+							if (self.x > self.right_end):
+								self.x = self.x - (3*(int(self.whole_side)))
+							else:
+								self.x = self.x + (int(self.whole_side))
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
