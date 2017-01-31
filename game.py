@@ -73,34 +73,54 @@ class Game:
 
         self.player_1 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
 							        (float(self.width * 0.015)), (float(self.width * 0.005)),float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4)), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
-        self.player_2 = player2.player_2((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
-							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
-							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), (float(self.width * 0.005)),float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
-        self.player_3 = player3.player_3((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
-							        (float(self.width * 0.015)), 0)
-        self.player_4 = player4.player_4((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
-							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), 
-							        (float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2), 0)
+						        float(self.width / 3), 
+						        float(self.width / 3)  + (float(self.width / 3) / 2), 
+						        float((self.width / 3) * 2), 
+						        float((self.width / 3) / 4), 
+						        float((self.height / 17)), 
+						        float((self.width / 3) + ((self.width / 3) / 4)), 
+						        float((self.width / 3) / 2), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),1)
+        self.player_2 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
+							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), (float(self.width * 0.015)),
+							        (float(self.width * 0.005)),	float((self.width / 3) / 2), 
+						        float(self.width / 3), 
+						        float(self.width / 3)  + (float(self.width / 3) / 2), 
+						        float((self.width / 3) * 2), 
+						        float((self.width / 3) / 4), 
+						        float((self.height / 17)), 
+						        float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						        float((self.width / 3) / 2), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
+        self.player_3 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
+							        (float(self.width * 0.015)), 0,float((self.width / 3) / 2), 
+						        float(self.width / 3), 
+						        float(self.width / 3)  + (float(self.width / 3) / 2), 
+						        float((self.width / 3) * 2), 
+						        float((self.width / 3) / 4), 
+						        float((self.height / 17)), 
+						        float((self.width / 3) + ((self.width / 3) / 4)), 
+						        float((self.width / 3) / 2), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),3)
+        self.player_4 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8)) - (float(self.width * 0.0125))),
+							        (float(self.height) - (self.height / 40)) - (float(self.width * 0.0125)), (float(self.width * 0.015)),
+							        0,	float((self.width / 3) / 2), 
+						        float(self.width / 3), 
+						        float(self.width / 3)  + (float(self.width / 3) / 2), 
+						        float((self.width / 3) * 2), 
+						        float((self.width / 3) / 4), 
+						        float((self.height / 17)), 
+						        float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						        float((self.width / 3) / 2), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
 
         self.smenu_active = False
         
@@ -169,17 +189,17 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is4Update = True
-                self.player_3.update(float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4)), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
+                #self.player_3.update(float((self.width / 3) / 2), 
+						          #  float(self.width / 3), 
+						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
+						          #  float((self.width / 3) * 2), 
+						          #  float((self.width / 3) / 4), 
+						          #  float((self.height / 17)), 
+						          #  float((self.width / 3) + ((self.width / 3) / 4)), 
+						          #  float((self.width / 3) / 2), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						          #  float((self.width / 3) / 8, ))
             else:
                 if not keys[pygame.K_3]:
                     self.Is3Update = False
@@ -188,17 +208,17 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is3Update = True
-                self.player_4.update(float((self.width / 3) / 2), 
-						            float(self.width / 3), 
-						            float(self.width / 3)  + (float(self.width / 3) / 2), 
-						            float((self.width / 3) * 2), 
-						            float((self.width / 3) / 4), 
-						            float((self.height / 17)), 
-						            float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						            float((self.width / 3) / 2), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						            (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						            float((self.width / 3) / 8, ))
+                #self.player_4.update(float((self.width / 3) / 2), 
+						          #  float(self.width / 3), 
+						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
+						          #  float((self.width / 3) * 2), 
+						          #  float((self.width / 3) / 4), 
+						          #  float((self.height / 17)), 
+						          #  float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						          #  float((self.width / 3) / 2), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						          #  float((self.width / 3) / 8, ))
 
             else:
                 if not keys[pygame.K_4]:
@@ -247,42 +267,42 @@ class Game:
             if other.turns.player1_name == "":
                other.turns.naming(1)
             self.Is1Down = True
-            self.player_1.draw(self.screen)
+            self.player_1.drawcircle(self.screen)
            
         else:
             if self.Is1Down:
-                self.player_1.draw(self.screen)
+                self.player_1.drawcircle(self.screen)
 
         if keys[pygame.K_2] and not self.Is2Down:
             if other.turns.player2_name == "":
                 other.turns.naming(2)
             self.Is2Down = True
-            self.player_2.draw(self.screen)
+            self.player_2.drawcube(self.screen)
 
         else:
             if self.Is2Down:
-                self.player_2.draw(self.screen)
+                self.player_2.drawcube(self.screen)
 
         if keys[pygame.K_3] and not self.Is3Down:
             if other.turns.player3_name == "":
                other.turns.naming(3)
             self.Is3Down = True
-            self.player_3.draw(self.screen)
+            self.player_3.drawcircle(self.screen)
 
 
         else:
             if self.Is3Down:
-                self.player_3.draw(self.screen)
+                self.player_3.drawcircle(self.screen)
 
         if keys[pygame.K_4] and not self.Is4Down:
             if other.turns.player4_name == "":
                other.turns.naming(4)
             self.Is4Down = True
-            self.player_4.draw(self.screen)
+            self.player_4.drawcube(self.screen)
 
         else:
             if self.Is4Down:
-                self.player_4.draw(self.screen)
+                self.player_4.drawcube(self.screen)
 
 
 

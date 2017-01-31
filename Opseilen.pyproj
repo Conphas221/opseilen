@@ -34,9 +34,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainMenuNew.py" />
-    <Compile Include="player.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="other.py" />
     <Compile Include="player1.py">
       <SubType>Code</SubType>

@@ -11,10 +11,12 @@ class player_1:
 			bgn_red, 
 			bgn_green, 
 			bgn_yellow, 
-			x_pos, y_pos, cnt_pos1x, whole_side, left_end, right_end, cnt_pos_back):
+			x_pos, y_pos, cnt_pos1x, whole_side, left_end, right_end, cnt_pos_back,x2,y2,nrr):
 		self.x = x
 		self.y = y
 		self.r = r
+		self.x2 = x2
+		self.y2 =y2
 		self.fill = fill
 		self.bgn_blue = bgn_blue
 		self.bgn_red = bgn_red
@@ -27,6 +29,7 @@ class player_1:
 		self.left_end = left_end
 		self.right_end = right_end
 		self.cnt_pos_back = cnt_pos_back
+		self.nrr = nrr
 
 	IsWDown = False
 	IsSDown = False
@@ -44,8 +47,11 @@ class player_1:
 
 
     #draws the player icon
-	def draw(self, screen):
+	def drawcircle(self, screen):
 		pygame.draw.circle(screen, tower.black, (int(self.x), int(self.y)), (int(self.r)), (int(self.fill)))
+
+	def drawcube(self, screen):
+		pygame.draw.rect(screen, tower.black, (int(self.x), int(self.y), int(self.x2), int(self.y2)), (int(self.fill)))
 
 	def up(self):
 
@@ -72,24 +78,82 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-							self.IsWDown = True
-							self.y = self.y - (int(self.y_pos))
-							self.cnt = self.cnt + 1
-					if (self.cnt > 10):	
-								if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
-									self.x = (int(self.cnt_pos1x))
-								elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
-									self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
-								elif (self.x > self.bgn_yellow):
-									self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
-								elif (self.x < self.bgn_red):
-									self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
 
 
 		elif ((self.cnt >= 10) and not (self.cnt >= 15)):
@@ -113,24 +177,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						if (self.cnt >= 10):	
-							if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
-								self.x = (int(self.cnt_pos1x))
-							elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
-								self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
-							elif (self.x > self.bgn_yellow):
-								self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
-							elif (self.x < self.bgn_red):
-								self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
 
-						self.y = self.y - (int(self.y_pos))
-						self.cnt = self.cnt + 1
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
 
 
 
@@ -165,17 +288,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsSDown = True
-						self.y = self.y + (int(self.y_pos))
-						self.cnt = self.cnt - 1
-						if self.cnt == 0: #breaks the loop so that the player can't move below the starting position
-							break
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+
 
 		elif((self.cnt >= 10)):
 				while other.questions.pressed == False:
@@ -198,17 +387,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsSDown = True
-						if (self.cnt == 11): #makes sure the player icon position is correct when moving down from the top 5 spots
-							self.x = self.x - (int(self.cnt_pos_back))
-						self.y = self.y + (int(self.y_pos))
-						self.cnt = self.cnt - 1
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+
 
 
 		#player can't move down when below the tower
@@ -244,17 +499,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsADown = True
-						if (self.x < self.left_end):
-							self.x = self.right_end + (int(self.x_pos))
-						else:
-							self.x = self.x - (int(self.x_pos))
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+
 			
 
 		#doesn't ask a question when the player moves below the tower to position himself
@@ -287,17 +608,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsADown = True
-						if (self.x < left_end):
-							self.x = self.x + (3*(int(self.whole_side)))
-						else:
-							self.x = self.x - (int(self.whole_side))
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+
 
 
 	def right(self):
@@ -324,17 +711,83 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsDDown = True
-						if (self.x > self.right_end):
-							self.x = self.left_end - (int(self.x_pos))
-						else:
-							self.x = self.x + (int(self.x_pos))
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+
 
 			
 			#when player is not on tower move right without questions
@@ -369,16 +822,81 @@ class player_1:
 							other.questions.question_open(globalz.o_geo,globalz.ori_o_geo,globalz.key_o_geo)
 						if self.x > self.bgn_yellow:
 							other.questions.question_open(globalz.o_history,globalz.ori_o_history,globalz.key_o_history)
-				if other.questions.player1_correct == 1:
-					other.dice.dice_roll()
-					for x in range(0, math.ceil(other.dice.dice_result/2)):
-						self.IsDDown = True
-						if (self.x > self.right_end):
-							self.x = self.x - (3*(int(self.whole_side)))
-						else:
-							self.x = self.x + (int(self.whole_side))
-					other.questions.player1_correct = 2
-				other.questions.pressed = False
-				other.turns.turn()
+				if self.nrr == 1:
+					if other.questions.player1_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player1_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 2:
+					if other.questions.player2_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player2_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr == 3:
+					if other.questions.player3_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player3_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
+				elif self.nrr ==4:
+					if other.questions.player4_correct == 1:
+						other.dice.dice_roll()
+						for x in range(0, math.ceil(other.dice.dice_result/2)):
+								self.IsWDown = True
+								self.y = self.y - (int(self.y_pos))
+								self.cnt = self.cnt + 1
+						if (self.cnt > 10):	
+									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
+										self.x = (int(self.cnt_pos1x))
+									elif ((self.x < self.bgn_yellow) and (self.x > self.bgn_green)):
+										self.x = (int(self.cnt_pos1x)) + (int(self.whole_side))
+									elif (self.x > self.bgn_yellow):
+										self. x = (int(self.cnt_pos1x)) + ((int(self.whole_side) * 2))
+									elif (self.x < self.bgn_red):
+										self.x = (int(self.cnt_pos1x)) - (int(self.whole_side))
+						other.questions.player4_correct = 2
+					other.questions.pressed = False
+					other.turns.turn()
 
 
