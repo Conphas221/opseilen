@@ -10,8 +10,7 @@ import globalz
 import button
 import inputbox
 import Grid
-import time
-import os
+import anim
 
 class Game:
     def __init__(self):
@@ -20,7 +19,7 @@ class Game:
         self.height = 768
         self.resolution = (self.width,self.height)
         #self.fullscreen = pygame.FULLSCREEN
-
+        self.anima = anim.Animation(1,2,self)
         pygame.init() # Makes pygame work
 
         # Set the resolution
@@ -57,7 +56,7 @@ class Game:
         self.Is3Update = False
         self.Is4Update = False
 
-
+        self.ina = 0
         # Create front layers
         self.frontlayer1 = background.frontlayer1(0, (0 + float(self.height / 20)), float(((self.width / 3) / 2) - self.width * 0.002), self.height)
         self.frontlayer2 = background.frontlayer2(float(((self.width / 3) * 2) + ((self.width / 3) / 2) + self.width * 0.002), (0 + float(self.height / 20)), float(self.width / 3), self.height)
@@ -122,7 +121,6 @@ class Game:
 
         self.smenu_active = False
         
-
         
 
 	# Update logic of game
@@ -131,7 +129,11 @@ class Game:
         self.frontlayer2.update()
         self.frontlayer3.update()
 
-        
+
+        while self.ina == 0:
+            other.dice.dice_roll()
+            self.ina += 1
+        self.anima.update()
         tower.Tower_red.update(self.Tower_red)
         tower.Tower_green.update(self.Tower_green)
         tower.Tower_blue.update(self.Tower_blue)
@@ -188,7 +190,17 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is4Update = True
-
+                #self.player_3.update(float((self.width / 3) / 2), 
+						          #  float(self.width / 3), 
+						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
+						          #  float((self.width / 3) * 2), 
+						          #  float((self.width / 3) / 4), 
+						          #  float((self.height / 17)), 
+						          #  float((self.width / 3) + ((self.width / 3) / 4)), 
+						          #  float((self.width / 3) / 2), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						          #  float((self.width / 3) / 8, ))
             else:
                 if not keys[pygame.K_3]:
                     self.Is3Update = False
@@ -197,7 +209,17 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is3Update = True
-
+                #self.player_4.update(float((self.width / 3) / 2), 
+						          #  float(self.width / 3), 
+						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
+						          #  float((self.width / 3) * 2), 
+						          #  float((self.width / 3) / 4), 
+						          #  float((self.height / 17)), 
+						          #  float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
+						          #  float((self.width / 3) / 2), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
+						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
+						          #  float((self.width / 3) / 8, ))
 
             else:
                 if not keys[pygame.K_4]:
@@ -300,6 +322,7 @@ class Game:
         #button.draw(self,25,450,150,25,"mc geograhpy",20,(0,0,0),(255,255,255), lambda game: other.questions.question_mc(globalz.mc_geo,globalz.ori_mc_geo,globalz.ans_mc_geo))
         # changed backgroundcolor of dice
         button.draw(self,25,550,165,25,"ROLL THE DICE",20,(95,158,160),(255,255,255), lambda game: other.dice.dice_roll())
+        button.draw(self,25,550,165,25,"ROLL THE DICE",20,(95,158,160),(255,255,255), lambda game: anim.Animation.update())
         # rect to clarify where the answer of questions is shown 
         button.draw(self,0.85*self.width,275,200,25,"RIGHT OR WRONG ANSWER?",20,(0,0,0),(255,255,255), lambda game: None)
         if other.questions.correct == 1:
@@ -309,7 +332,7 @@ class Game:
 
 
         #displays the result of the dice roll
-        button.draw(self,25,600,150,25,str(other.dice.dice_result),20,(95,158,160),(255,255,255), lambda game: None)
+        #button.draw(self,25,600,150,25,str(other.dice.dice_result),20,(95,158,160),(255,255,255), lambda game: None)
        
 
         #displays the name of the current player
@@ -337,8 +360,9 @@ class Game:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
             elif self.player_4.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
-            import MainMenuNew
+           
             #These are the buttons on the termination screen
+            import MainMenuNew
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
@@ -346,14 +370,12 @@ class Game:
             #checks whether the settings menu has been requested by the user, and if so, opens it.
         if self.smenu_active:
             self.screen.fill((255,255,255))
-            import MainMenuNew
             button.update(self)
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'Start background music',50,(0,0,0),(255,255,255), lambda game: other.music())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Stop background music',50,(0,0,0),(255,255,255), lambda game: other.stop_music())
             button.draw(self,0.3*self.width,0.25*self.height,500,100,'back',50,(0,0,0),(255,255,255), lambda game: self.smenu())
-            button.draw(self,0.3*self.width,0.5*self.height,500,100,"return to main menu",50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
 
-
+        self.anima.Draw(self.screen)
         # Flipping the screen
         pygame.display.flip()
 
@@ -374,7 +396,6 @@ class Game:
         while not process_ev.process_events():
             self.update()
             self.draw()
-            
 
 # Handeling pygame events
 #def process_events():

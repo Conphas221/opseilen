@@ -28,8 +28,3 @@ def program():
 	mainmenu.MainmenuNew.program_loop()
 
 program()
-
-
-
-
-dice_result+".bmp"

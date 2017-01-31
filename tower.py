@@ -4,12 +4,12 @@ import sys
 import globalz
 import other
 
-red = (255, 99, 71) # Configures some colors
-green = (50, 205, 50) 
-blue = (65, 105, 225) 
+red = (255, 71, 71) # Configures some colors
+green = (71, 255, 71) 
+blue = (71, 71, 255) 
 white = (255,255,255)
 black = (0,0,0)
-yellow = (230, 230, 0)
+yellow = (255, 255, 71)
 
 class Empty:
 	def __init__(self):

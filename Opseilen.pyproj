@@ -24,6 +24,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="button.py" />
+    <Compile Include="anim.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="game.py" />
     <Compile Include="globalz.py" />
     <Compile Include="Grid.py" />
@@ -36,6 +39,9 @@
     <Compile Include="MainMenuNew.py" />
     <Compile Include="other.py" />
     <Compile Include="player1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="points.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="process_ev.py">
