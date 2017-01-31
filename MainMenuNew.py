@@ -2,11 +2,22 @@ import pygame
 import sys
 import os
 import main
-import game
 import other
 
 #from pygame.locals import *
-
+def reloop():
+    other.turns.player1_name = ""
+    other.turns.player2_name = ""
+    other.turns.player3_name = ""
+    other.turns.player4_name = ""
+    other.turns.player_count = 0
+    other.turns.playerz = []
+    other.turns.current_player = 0
+    other.turns.current_player_name = ""
+    
+    for _ in dir():
+        if _[0]!='_': delattr(sys.modules[__name__], _)
+    exec(open("MainMenuNew.py").read())
 #NO GLOBAL VARIABLES
 
 class Button:
@@ -62,7 +73,8 @@ class InstructionMenu:
 class MainMenu:
     def __init__(self, width, height):
         self.Width = width
-        self.Height = height        
+        self.Height = height 
+        import game       
         self.Image = pygame.image.load(os.path.join('project2/euromast_illustratie_02.jpg'))
         self.Buttons = [Button("PLAY", 250, 40, lambda : game.Game().program_loop()),
                         Button("INSTRUCTIONS", 250, 110, lambda : InstructionMenu(width, height)),
@@ -101,19 +113,7 @@ while True:
     pygame.display.flip()
 
 
-def reloop():
-    other.turns.player1_name = ""
-    other.turns.player2_name = ""
-    other.turns.player3_name = ""
-    other.turns.player4_name = ""
-    other.turns.player_count = 0
-    other.turns.playerz = []
-    other.turns.current_player = 0
-    other.turns.current_player_name = ""
-    other.turns.match_started = False
-    for _ in dir():
-        if _[0]!='_': delattr(sys.modules[__name__], _)
-    exec(open("MainMenuNew.py").read())
+
 
 loop()
 

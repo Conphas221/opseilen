@@ -5,15 +5,13 @@ import background
 import tower
 import process_ev
 import player1
-import player2
-import player3
-import player4
 import other
 import globalz
 import button
 import inputbox
 import Grid
-
+import time
+import os
 
 class Game:
     def __init__(self):
@@ -124,6 +122,7 @@ class Game:
 
         self.smenu_active = False
         
+
         
 
 	# Update logic of game
@@ -132,7 +131,7 @@ class Game:
         self.frontlayer2.update()
         self.frontlayer3.update()
 
-
+        
         tower.Tower_red.update(self.Tower_red)
         tower.Tower_green.update(self.Tower_green)
         tower.Tower_blue.update(self.Tower_blue)
@@ -189,17 +188,7 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is4Update = True
-                #self.player_3.update(float((self.width / 3) / 2), 
-						          #  float(self.width / 3), 
-						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
-						          #  float((self.width / 3) * 2), 
-						          #  float((self.width / 3) / 4), 
-						          #  float((self.height / 17)), 
-						          #  float((self.width / 3) + ((self.width / 3) / 4)), 
-						          #  float((self.width / 3) / 2), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						          #  float((self.width / 3) / 8, ))
+
             else:
                 if not keys[pygame.K_3]:
                     self.Is3Update = False
@@ -208,17 +197,7 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is3Update = True
-                #self.player_4.update(float((self.width / 3) / 2), 
-						          #  float(self.width / 3), 
-						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
-						          #  float((self.width / 3) * 2), 
-						          #  float((self.width / 3) / 4), 
-						          #  float((self.height / 17)), 
-						          #  float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						          #  float((self.width / 3) / 2), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						          #  float((self.width / 3) / 8, ))
+
 
             else:
                 if not keys[pygame.K_4]:
@@ -358,9 +337,8 @@ class Game:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
             elif self.player_4.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
-           
-            #These are the buttons on the termination screen
             import MainMenuNew
+            #These are the buttons on the termination screen
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
@@ -368,10 +346,12 @@ class Game:
             #checks whether the settings menu has been requested by the user, and if so, opens it.
         if self.smenu_active:
             self.screen.fill((255,255,255))
+            import MainMenuNew
             button.update(self)
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'Start background music',50,(0,0,0),(255,255,255), lambda game: other.music())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Stop background music',50,(0,0,0),(255,255,255), lambda game: other.stop_music())
             button.draw(self,0.3*self.width,0.25*self.height,500,100,'back',50,(0,0,0),(255,255,255), lambda game: self.smenu())
+            button.draw(self,0.3*self.width,0.5*self.height,500,100,"return to main menu",50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
 
 
         # Flipping the screen
@@ -394,6 +374,7 @@ class Game:
         while not process_ev.process_events():
             self.update()
             self.draw()
+            
 
 # Handeling pygame events
 #def process_events():
