@@ -13,6 +13,7 @@ import Grid
 import anim
 
 class Game:
+    ina = 0
     def __init__(self):
         # Resolution
         self.width = 1366
@@ -55,7 +56,7 @@ class Game:
         self.Is3Update = False
         self.Is4Update = False
 
-        self.ina = 0
+        
         # Create front layers
         self.frontlayer1 = background.frontlayer1(0, (0 + float(self.height / 20)), float(((self.width / 3) / 2) - self.width * 0.002), self.height)
         self.frontlayer2 = background.frontlayer2(float(((self.width / 3) * 2) + ((self.width / 3) / 2) + self.width * 0.002), (0 + float(self.height / 20)), float(self.width / 3), self.height)
@@ -149,9 +150,9 @@ class Game:
         Grid.BlueGridTop.update(self.BlueGridTop)
         Grid.GreenGridTop.update(self.GreenGridTop)
       
-        while self.ina == 0:
+        while Game.ina == 0:
             other.dice.dice_roll()
-            self.ina += 1
+            Game.ina += 1
         self.anima.update()
 
         keys = pygame.key.get_pressed()
@@ -376,11 +377,12 @@ class Game:
             #checks whether the settings menu has been requested by the user, and if so, opens it.
         if self.smenu_active:
             self.screen.fill((255,255,255))
+            import MainMenuNew
             button.update(self)
             button.draw(self,0.1*self.width,0.75*self.height,500,100,'Start background music',50,(0,0,0),(255,255,255), lambda game: other.music())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'Stop background music',50,(0,0,0),(255,255,255), lambda game: other.stop_music())
             button.draw(self,0.3*self.width,0.25*self.height,500,100,'back',50,(0,0,0),(255,255,255), lambda game: self.smenu())
-
+            button.draw(self,0.3*self.width,0.5*self.height,500,100,"return to main menu",50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
         # Flipping the screen
         pygame.display.flip()
 

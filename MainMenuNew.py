@@ -8,6 +8,21 @@ import other
 #from pygame.locals import *
 
 #NO GLOBAL VARIABLES
+def reloop():
+    other.turns.player1_name = ""
+    other.turns.player2_name = ""
+    other.turns.player3_name = ""
+    other.turns.player4_name = ""
+    other.turns.player_count = 0
+    other.turns.playerz = []
+    other.turns.current_player = 0
+    other.turns.current_player_name = ""
+    other.turns.match_started = False
+    game.Game.ina = 0
+    other.questions.correct = 2
+    for _ in dir():
+        if _[0]!='_': delattr(sys.modules[__name__], _)
+    exec(open("MainMenuNew.py").read())
 
 class Button:
     def __init__(self, text, x, y, action):
@@ -101,19 +116,7 @@ while True:
     pygame.display.flip()
 
 
-def reloop():
-    other.turns.player1_name = ""
-    other.turns.player2_name = ""
-    other.turns.player3_name = ""
-    other.turns.player4_name = ""
-    other.turns.player_count = 0
-    other.turns.playerz = []
-    other.turns.current_player = 0
-    other.turns.current_player_name = ""
-    other.turns.match_started = False
-    for _ in dir():
-        if _[0]!='_': delattr(sys.modules[__name__], _)
-    exec(open("MainMenuNew.py").read())
+
 
 loop()
 
