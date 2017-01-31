@@ -295,6 +295,8 @@ class player_1:
 								self.IsWDown = True
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
+								if self.cnt == 0:
+									break
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -314,6 +316,8 @@ class player_1:
 								self.IsWDown = True
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
+								if self.cnt == 0:
+									break
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -333,6 +337,8 @@ class player_1:
 								self.IsWDown = True
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
+								if self.cnt == 0:
+									break
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -352,6 +358,8 @@ class player_1:
 								self.IsWDown = True
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
+								if self.cnt == 0:
+									break
 						if (self.cnt > 10):	
 									if ((self.x < self.bgn_green) and (self.x > self.bgn_red)):
 										self.x = (int(self.cnt_pos1x))
@@ -392,6 +400,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
+								if (self.cnt == 11): #makes sure the player icon position is correct when moving down from the top 5 spots
+									self.x = self.x - (int(self.cnt_pos_back))
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
@@ -411,6 +421,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
+								if (self.cnt == 11): #makes sure the player icon position is correct when moving down from the top 5 spots
+									self.x = self.x - (int(self.cnt_pos_back))
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
@@ -430,6 +442,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
+								if (self.cnt == 11): #makes sure the player icon position is correct when moving down from the top 5 spots
+									self.x = self.x - (int(self.cnt_pos_back))
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
@@ -449,6 +463,8 @@ class player_1:
 						other.dice.dice_roll()
 						for x in range(0, math.ceil(other.dice.dice_result/2)):
 								self.IsWDown = True
+								if (self.cnt == 11): #makes sure the player icon position is correct when moving down from the top 5 spots
+									self.x = self.x - (int(self.cnt_pos_back))
 								self.y = self.y + (int(self.y_pos))
 								self.cnt = self.cnt - 1
 						if (self.cnt > 10):	
@@ -473,7 +489,7 @@ class player_1:
 
 
 
-	def right(self):
+	def left(self):
 		keys = pygame.key.get_pressed()
 		
 
@@ -695,7 +711,7 @@ class player_1:
 
 
 
-	def left(self):
+	def right(self):
 		keys = pygame.key.get_pressed()
 		#asks a question when the player moves right on the tower
 		if (self.cnt < 11) and (self.cnt > 0):
