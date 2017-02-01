@@ -4,8 +4,13 @@ import os
 import main
 import game
 import other
+import database
+pygame.init()
+width = 700
+height = 800
+screen = pygame.display.set_mode((width, height))
+font = pygame.font.Font(None, 30)
 
-#NO GLOBAL VARIABLES
 def reloop():
     other.turns.player1_name = ""
     other.turns.player2_name = ""
@@ -17,7 +22,14 @@ def reloop():
     other.turns.current_player_name = ""
     other.turns.match_started = False
     game.Game.ina = 0
+    game.Game.won = 0
     other.questions.correct = 2
+    other.questions.player1_correct = 2
+    other.questions.player2_correct = 2
+    other.questions.player3_correct = 2
+    other.questions.player4_correct = 2
+    other.questions.pressed = False
+    other.questions.dice_result = 1
     for _ in dir():
         if _[0]!='_': delattr(sys.modules[__name__], _)
     exec(open("MainMenuNew.py").read())
@@ -78,9 +90,20 @@ class HighScoreMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height 
-        self.Image = pygame.image.load(os.path.join('Project2/spelregels.bmp'))
+        #self.Image = pygame.image.load(os.path.join('project2/euromast_illustratie_02.jpg'))
+        self.scorelist = database.execute_query("SELECT name,wins FROM scores ORDER BY wins DESC")
+        self.playernames = []
+        self.playerscores = []
+        self.highscore = []
 
         self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]    
+    
+    def update1(self):
+        for entry in self.scorelist:
+            #self.playernames.extend(str(entry["name"]))
+            #self.playerscores.extend(str(entry["wins"]))
+            highscores = (entry["name"], entry["wins"])
+            self.highscore.extend(highscores)
     
     def Update(self):
         events = pygame.event.get()
@@ -94,7 +117,14 @@ class HighScoreMenu:
         return self
     
     def Draw(self, screen):
-        screen.blit(self.Image,(150, 50))
+        self.update1()
+        for l in range(0,10):
+
+            screen.blit(font.render(str(self.highscore[l]),True,(0,0,0)),(150, 50*((1+l)*1.1)))
+        for k in range(1,11,2):
+            screen.blit(font.render("wins",True,(0,0,0)),(180, 50*((1+k)*1.1)))
+            #screen.blit(self.playerscores[l],(450, 50*((1+l)*30)))
+            
         for button in self.Buttons:
             button.Draw(screen)
 
@@ -126,10 +156,6 @@ class MainMenu:
             button.Draw(screen)
 
 
-pygame.init()
-width = 700
-height = 800
-screen = pygame.display.set_mode((width, height))
 scene = MainMenu(width, height)
 while True:
     pygame.event.pump()
@@ -137,6 +163,7 @@ while True:
 
     scene = scene.Update()
     scene.Draw(screen)
+
 
     pygame.display.flip()
 

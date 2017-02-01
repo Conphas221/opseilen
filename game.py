@@ -137,7 +137,7 @@ class Game:
         self.frontlayer1.update()
         self.frontlayer2.update()
         self.frontlayer3.update()
-
+        print(other.dice.dice_result)
 
         
         tower.Tower_red.update(self.Tower_red)
@@ -276,7 +276,7 @@ class Game:
         if keys[pygame.K_1] and not self.Is1Down:
             if other.turns.player1_name == "":
                other.turns.naming(1)
-               database.update(other.turns.player1_name,0)
+               database.update(other.turns.player1_name)
             self.Is1Down = True
             self.player_1.drawcircle(self.screen)
            
@@ -287,7 +287,7 @@ class Game:
         if keys[pygame.K_2] and not self.Is2Down:
             if other.turns.player2_name == "":
                 other.turns.naming(2)
-                database.update(other.turns.player2_name,0)
+                database.update(other.turns.player2_name)
             self.Is2Down = True
             self.player_2.drawcube(self.screen)
 
@@ -298,7 +298,7 @@ class Game:
         if keys[pygame.K_3] and not self.Is3Down:
             if other.turns.player3_name == "":
                other.turns.naming(3)
-               database.update(other.turns.player3_name,0)
+               database.update(other.turns.player3_name)
             self.Is3Down = True
             self.player_3.drawcircle(self.screen)
 
@@ -310,7 +310,7 @@ class Game:
         if keys[pygame.K_4] and not self.Is4Down:
             if other.turns.player4_name == "":
                other.turns.naming(4)
-               database.update(other.turns.player4_name,0)
+               database.update(other.turns.player4_name)
             self.Is4Down = True
             self.player_4.drawcube(self.screen)
 

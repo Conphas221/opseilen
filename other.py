@@ -122,7 +122,7 @@ def stop_music():#stop music function
 
 
 class dice:
-    dice_result = 0
+    dice_result = 1
     def dice_roll():
         dice.dice_result = random.randint(1,6)
 
