@@ -5,8 +5,6 @@ import main
 import game
 import other
 
-#from pygame.locals import *
-
 #NO GLOBAL VARIABLES
 def reloop():
     other.turns.player1_name = ""
@@ -20,7 +18,6 @@ def reloop():
     other.turns.match_started = False
     game.Game.ina = 0
     other.questions.correct = 2
-    game.Game.won = 0
     for _ in dir():
         if _[0]!='_': delattr(sys.modules[__name__], _)
     exec(open("MainMenuNew.py").read())
@@ -51,7 +48,8 @@ class Button:
         
     def Draw(self, screen):
         screen.blit(self.Text, self.Rect)
-        
+
+
 class InstructionMenu:
     def __init__(self, width, height):
         self.Width = width
@@ -75,6 +73,32 @@ class InstructionMenu:
         for button in self.Buttons:
             button.Draw(screen)
 
+
+class HighScoreMenu:
+    def __init__(self, width, height):
+        self.Width = width
+        self.Height = height 
+        self.Image = pygame.image.load(os.path.join('Project2/spelregels.bmp'))
+
+        self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]    
+    
+    def Update(self):
+        events = pygame.event.get()
+        for event in events:            
+            if event.type == pygame.QUIT:
+                sys.exit()
+        for button in self.Buttons:
+            res = button.Update(events)
+            if (res != button):
+                return res
+        return self
+    
+    def Draw(self, screen):
+        screen.blit(self.Image,(150, 50))
+        for button in self.Buttons:
+            button.Draw(screen)
+
+
 class MainMenu:
     def __init__(self, width, height):
         self.Width = width
@@ -82,7 +106,7 @@ class MainMenu:
         self.Image = pygame.image.load(os.path.join('project2/euromast_illustratie_02.jpg'))
         self.Buttons = [Button("PLAY", 250, 40, lambda : game.Game().program_loop()),
                         Button("INSTRUCTIONS", 250, 110, lambda : InstructionMenu(width, height)),
-                        Button("HIGH SCORE", 250, 180, lambda : sys.exit()),
+                        Button("HIGH SCORE", 250, 180, lambda : HighScoreMenu(width, height)),
                         Button("QUIT", 250, 250, lambda : sys.exit())]
     def Update(self):
         events = pygame.event.get()
@@ -101,7 +125,6 @@ class MainMenu:
             button.Draw(screen)
 
 
-
 pygame.init()
 width = 700
 height = 800
@@ -117,10 +140,7 @@ while True:
     pygame.display.flip()
 
 
-
-
 loop()
-
 
 def program():
     mainmenu = MainMenuNew()
