@@ -1,4 +1,4 @@
-import pygame, math, sys, random, time, string, inputbox, os, tower, globalz
+import pygame, math, sys, random, time, string, inputbox, os, tower, globalz #, pickle, player1
 from pygame.locals import *
 pygame.init() # makes pygame work
 width = 1366
@@ -22,7 +22,7 @@ pygame.display.set_caption('Opseilen!')
 
 
 
-class turns:
+class turns:        #Meta.....
     player1_name = ""
     player2_name = ""
     player3_name = ""
@@ -79,6 +79,15 @@ class turns:
             turns.playerz.extend(list_player4name)
             #turns.current_player = 4
 
+#class turns(Metaturns):
+#    player1_name = ""
+#    player2_name = ""
+#    player3_name = ""
+#    player4_name = ""
+#    player_count = 0
+#    playerz = []
+#    current_player = 0
+#    current_player_name = ""
         
 #class Rects():
     
@@ -202,3 +211,20 @@ class questions:
             elif turns.current_player == 4:
                 questions.player4_correct = 0
             questions.pressed = True
+
+#class SaveGame:
+#    saved = False
+#    #Save the game
+#    def save():
+#        gam = game.Game()
+#        with open("savegame", "wb") as f:
+#            pickle.dump([turns, player1.player_1.update], f, -1)
+         
+#        SaveGame.saved = True
+#       # text_font = font.render("Game Saved", 1,(124,252,0))
+#       # pygame.Surface.blit(screen, text_font, (0.85*width,60)) 
+
+#    #Load the game
+#    def load():
+#        with open("savegame", "rb") as f:
+#            turns, player1.player_1.update = pickle.load(f)

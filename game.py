@@ -343,6 +343,15 @@ class Game:
         elif other.questions.correct == 0:
             button.draw(self,0.85*self.width,300,200,25,"YOUR ANSWER IS WRONG",20,(255,0,0),(0,0,0), lambda game: None)
 
+#        import MainMenuNew
+#        #save button
+#        button.draw(self, 0.85*self.width,50,200,25,"SAVE THE GAME",20,(0,0,0),(255,255,255), lambda game: other.SaveGame.save())
+
+#        if other.SaveGame.saved:
+#            button.draw(self, 0.85*self.width,80,200,25,"GAME SAVED",20,(255,255,255),(124,252,0), lambda game: None)
+#            time.sleep(0.5)
+#            other.SaveGame.saved = False
+
 
         #displays the result of the dice roll
         #button.draw(self,25,600,150,25,str(other.dice.dice_result),20,(95,158,160),(255,255,255), lambda game: None)

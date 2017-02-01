@@ -105,6 +105,7 @@ class MainMenu:
         self.Height = height        
         self.Image = pygame.image.load(os.path.join('project2/euromast_illustratie_02.jpg'))
         self.Buttons = [Button("PLAY", 250, 40, lambda : game.Game().program_loop()),
+                        #Button("LOAD SAVE GAME", 250, 80, lambda: [game.Game().program_loop(), other.SaveGame.load()]),
                         Button("INSTRUCTIONS", 250, 110, lambda : InstructionMenu(width, height)),
                         Button("HIGH SCORE", 250, 180, lambda : HighScoreMenu(width, height)),
                         Button("QUIT", 250, 250, lambda : sys.exit())]
