@@ -11,9 +11,15 @@ import button
 import inputbox
 import Grid
 import anim
+import database
+import time
+#def gotomainmenu(game, winner):
+
+#    MainMenuNew.reloop()
 
 class Game:
     ina = 0
+    won = 0
     def __init__(self):
         # Resolution
         self.width = 1366
@@ -94,7 +100,7 @@ class Game:
 						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
 						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
         self.player_3 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
-							        (float(self.width * 0.015)), 0,float((self.width / 3) / 2), 
+							        (float(self.width * 0.015)),0,float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -117,7 +123,7 @@ class Game:
 						        float((self.width / 3) / 2), 
 						        (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
 						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
+						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),4)
 
         #Create Dice
         self.anima = anim.Animation(1,2,self)
@@ -152,7 +158,13 @@ class Game:
       
         while Game.ina == 0:
             other.dice.dice_roll()
-            Game.ina += 1
+            time.sleep(0.3)
+            Game.ina = 1
+       
+        if Game.ina == 1:
+            self.anima.update()
+            time.sleep(0.1)
+        Game.ina = 2
         self.anima.update()
 
         keys = pygame.key.get_pressed()
@@ -272,6 +284,7 @@ class Game:
         if keys[pygame.K_1] and not self.Is1Down:
             if other.turns.player1_name == "":
                other.turns.naming(1)
+               database.update(other.turns.player1_name,0)
             self.Is1Down = True
             self.player_1.drawcircle(self.screen)
            
@@ -282,6 +295,7 @@ class Game:
         if keys[pygame.K_2] and not self.Is2Down:
             if other.turns.player2_name == "":
                 other.turns.naming(2)
+                database.update(other.turns.player2_name,0)
             self.Is2Down = True
             self.player_2.drawcube(self.screen)
 
@@ -292,6 +306,7 @@ class Game:
         if keys[pygame.K_3] and not self.Is3Down:
             if other.turns.player3_name == "":
                other.turns.naming(3)
+               database.update(other.turns.player3_name,0)
             self.Is3Down = True
             self.player_3.drawcircle(self.screen)
 
@@ -303,6 +318,7 @@ class Game:
         if keys[pygame.K_4] and not self.Is4Down:
             if other.turns.player4_name == "":
                other.turns.naming(4)
+               database.update(other.turns.player4_name,0)
             self.Is4Down = True
             self.player_4.drawcube(self.screen)
 
@@ -361,16 +377,39 @@ class Game:
             button.update(self)
             if self.player_1.cnt >= 15:
                 button.draw(self,0.3*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player1_name),50,(255,255,255),(0,0,0), lambda game: None)
+                if Game.won == 0:
+                    database.increment_wins(other.turns.player1_name)
+                    database.increment_loses(other.turns.player2_name)
+                    database.increment_loses(other.turns.player3_name)
+                    database.increment_loses(other.turns.player4_name)
+                    Game.won = 1
             elif self.player_2.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player2_name),50,(255,255,255),(0,0,0), lambda game: None)
+                if Game.won == 0:
+                    database.increment_wins(other.turns.player2_name)
+                    database.increment_loses(other.turns.player1_name)
+                    database.increment_loses(other.turns.player3_name)
+                    database.increment_loses(other.turns.player4_name)
+                    Game.won = 1
             elif self.player_3.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player3_name),50,(255,255,255),(0,0,0), lambda game: None)
+                if Game.won == 0:
+                    database.increment_wins(other.turns.player3_name)
+                    database.increment_loses(other.turns.player2_name)
+                    database.increment_loses(other.turns.player1_name)
+                    database.increment_loses(other.turns.player4_name)
+                    Game.won = 1
             elif self.player_4.cnt >= 15:
                 button.draw(self,0.2*self.width,0.25*self.height,500,100,'The winner is: '+str(other.turns.player4_name),50,(255,255,255),(0,0,0), lambda game: None)
-           
+                if Game.won == 0:
+                    database.increment_wins(other.turns.player4_name)
+                    database.increment_loses(other.turns.player2_name)
+                    database.increment_loses(other.turns.player3_name)
+                    database.increment_loses(other.turns.player1_name)
+                    Game.won = 1
             #These are the buttons on the termination screen
             import MainMenuNew
-            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: gotomainmenu(gotomainmenu,0))
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
    

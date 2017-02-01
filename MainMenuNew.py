@@ -20,6 +20,7 @@ def reloop():
     other.turns.match_started = False
     game.Game.ina = 0
     other.questions.correct = 2
+    game.Game.won = 0
     for _ in dir():
         if _[0]!='_': delattr(sys.modules[__name__], _)
     exec(open("MainMenuNew.py").read())
