@@ -1,9 +1,51 @@
-CREATE TABLE `scores` (
-	`name` VARCHAR(64) NOT NULL DEFAULT 'UnnamedPlayer',
-	`wins` INT(11) NOT NULL DEFAULT '0',
-	`loses` INT(11) NULL DEFAULT '0',
-	PRIMARY KEY (`name`)
+DROP DATABASE IF EXISTS groep6;
+CREATE DATABASE IF NOT EXISTS groep6;
+USE groep6;
+
+#TABLE FOR SCORE IN GAME
+CREATE TABLE scores
+(
+name VARCHAR(64) NOT NULL DEFAULT 'UnnamedPlayer',
+wins INT(11) NOT NULL DEFAULT '0',
+loses INT(11) NULL DEFAULT '0',
+
+PRIMARY KEY (name)
 )
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;
+
+
+#TABLE FOR SAVEGAME 
+CREATE TABLE savegames
+(
+id INT NOT NULL AUTO_INCREMENT,
+number_of_players INT NOT NULL DEFAULT '0',
+current_player INT NOT NULL DEFAULT '0',
+
+PRIMARY KEY (id)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+#PLAYER POSITION ETC. 
+CREATE TABLE player_savegames
+(
+id INT NOT NULL AUTO_INCREMENT,
+player_name TEXT NOT NULL,
+pos_x INT NOT NULL DEFAULT '0',
+pos_y INT NOT NULL DEFAULT '0',
+score INT NOT NULL DEFAULT '0',
+player_turn INT NOT NULL DEFAULT '0',
+
+PRIMARY KEY(id)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+
+
+
+
