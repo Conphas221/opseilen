@@ -13,9 +13,7 @@ import Grid
 import anim
 import database
 import time
-#def gotomainmenu(game, winner):
 
-#    MainMenuNew.reloop()
 
 class Game:
     ina = 0
@@ -74,6 +72,7 @@ class Game:
         self.Tower_blue = tower.Tower_blue(float((self.width / 3) / 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
         self.Tower_yellow = tower.Tower_yellow(float((self.width / 3) * 2), (0 + float(self.height / 20)), (float(self.width / 3) / 2), (float(self.height - (self.height / 10))))
 
+        
         self.player_1 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
 							        (float(self.width * 0.015)), (float(self.width * 0.005)),float((self.width / 3) / 2), 
 						        float(self.width / 3), 
@@ -100,7 +99,7 @@ class Game:
 						        (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
 						        float((self.width / 3) / 8, ),(float(self.width * 0.0125) * 2), (float(self.width * 0.0125) * 2),2)
         self.player_3 = player1.player_1((float((self.width / 3) + ((self.width / 3) / 8))), (float(self.height) - (self.height / 40)),
-							        (float(self.width * 0.015)),0,float((self.width / 3) / 2), 
+							        (float(self.width * 0.015)), 0,float((self.width / 3) / 2), 
 						        float(self.width / 3), 
 						        float(self.width / 3)  + (float(self.width / 3) / 2), 
 						        float((self.width / 3) * 2), 
@@ -207,17 +206,14 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is4Update = True
-                #self.player_3.update(float((self.width / 3) / 2), 
-						          #  float(self.width / 3), 
-						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
-						          #  float((self.width / 3) * 2), 
-						          #  float((self.width / 3) / 4), 
-						          #  float((self.height / 17)), 
-						          #  float((self.width / 3) + ((self.width / 3) / 4)), 
-						          #  float((self.width / 3) / 2), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4))), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						          #  float((self.width / 3) / 8, ))
+                if keys[pygame.K_UP]:
+                    self.player_3.up()
+                elif keys[pygame.K_DOWN]:
+                    self.player_3.down()
+                elif keys[pygame.K_LEFT]:
+                    self.player_3.left()
+                elif keys[pygame.K_RIGHT]:
+                    self.player_3.right()
             else:
                 if not keys[pygame.K_3]:
                     self.Is3Update = False
@@ -226,18 +222,14 @@ class Game:
                 self.Is1Update = True
                 self.Is2Update = True
                 self.Is3Update = True
-                #self.player_4.update(float((self.width / 3) / 2), 
-						          #  float(self.width / 3), 
-						          #  float(self.width / 3)  + (float(self.width / 3) / 2), 
-						          #  float((self.width / 3) * 2), 
-						          #  float((self.width / 3) / 4), 
-						          #  float((self.height / 17)), 
-						          #  float((self.width / 3) + ((self.width / 3) / 4) - (float(self.width * 0.0125))), 
-						          #  float((self.width / 3) / 2), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) - (float((self.width / 3) / 4)) - (float(self.width * 0.0125) * 2)), 
-						          #  (float((self.width / 3) + ((self.width / 3) / 8)) + (float((self.width / 3) / 4)) * 4), 
-						          #  float((self.width / 3) / 8, ))
-
+                if keys[pygame.K_UP]:
+                    self.player_4.up()
+                elif keys[pygame.K_DOWN]:
+                    self.player_4.down()
+                elif keys[pygame.K_LEFT]:
+                    self.player_4.left()
+                elif keys[pygame.K_RIGHT]:
+                    self.player_4.right()
             else:
                 if not keys[pygame.K_4]:
                     self.Is4Update = False
@@ -409,7 +401,7 @@ class Game:
                     Game.won = 1
             #These are the buttons on the termination screen
             import MainMenuNew
-            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: gotomainmenu(gotomainmenu,0))
+            button.draw(self,0.1*self.width,0.75*self.height,500,100,'RETURN TO MAIN MENU',50,(0,0,0),(255,255,255), lambda game: MainMenuNew.reloop())
             button.draw(self,0.5*self.width,0.75*self.height,500,100,'QUIT GAME',50,(0,0,0),(255,255,255), lambda game: sys.exit())
 
    
