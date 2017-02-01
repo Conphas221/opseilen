@@ -23,27 +23,37 @@ class Animation:
         self.y = y
         self.done = False
         self.old = other.dice.dice_result
-        self.imglst = tower.Node(diceimages[0], 
-              tower.Node(diceimages[1], 
-               tower.Node(diceimages[2], 
-                tower.Node(diceimages[3], 
-                 tower.Node(diceimages[4], 
-                  tower.Node(diceimages[5], empty))))))
+        self.image = diceimages[other.dice.dice_result-1]
+        #self.imglst = tower.Node(diceimages[0], 
+        #      tower.Node(diceimages[1], 
+        #       tower.Node(diceimages[2], 
+        #        tower.Node(diceimages[3], 
+        #         tower.Node(diceimages[4], 
+        #          tower.Node(diceimages[5], empty))))))
         
     
 
-    def update(self):
-       if self.old != other.dice.dice_result or other.dice.dice_result == 9:
-           lst = self.imglst
-           while (not  diceimages[other.dice.dice_result-1] == lst.Value):
-                lst = lst.Tail
-                if lst.IsEmpty:
-                    lst = self.imglst
-                    break
-                self.image = lst.Value
-           self.done = True
-       self.old = other.dice.dice_result
+    #def update1(self):
+    #   if self.old != other.dice.dice_result:
+    #       lst = self.imglst
+    #       while (not  diceimages[other.dice.dice_result-1] == lst.Value):
+    #            lst = lst.Tail
+    #            if lst.IsEmpty:
+    #                lst = self.imglst
+    #                #break
+    #            self.image = lst.Value
+    #       self.done = True
+    #   self.old = other.dice.dice_result
             
+    def update(self):
+        if self.old != other.dice.dice_result:
+            for h in range(0,6):
+                if h+1 == other.dice.dice_result:
+                    self.image = diceimages[h]
+            self.done = True
+        self.old = other.dice.dice_result
+
+    
 
     def Draw(self, screen):
          if self.done:

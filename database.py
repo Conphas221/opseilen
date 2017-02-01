@@ -21,7 +21,7 @@ def quit():
     db.close()
 
 
-def update(name, score):
+def update(name):
 
     scores = execute_query("SELECT * from scores WHERE name='{}'".format(name))
     updateScore = True
