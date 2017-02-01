@@ -6,6 +6,8 @@ db = pymysql.connect(host='178.62.226.124',
                              password='banaan',
                              db='groep6')
 
+#tabel is called 'scores'
+
 def init():
     pass
 
@@ -15,11 +17,8 @@ def execute_query(sql):
     db.commit()
     return cur.fetchall()
 
-
 def quit():
     db.close()
-
-
 
 
 def update(name, score):
@@ -28,15 +27,7 @@ def update(name, score):
     updateScore = True
 
     if not len(scores):
-        execute_query("INSERT INTO scores (name,score,wins,loses) VALUES ('{}','0','0','0')".format(name, 0, 0, 0))
-
-   
-    for x in scores:
-        if x["score"] > score:
-            updateScore = False
-
-    if updateScore:
-        execute_query("UPDATE scores SET score='{}' WHERE name='{}'".format(score, name))
+        execute_query("INSERT INTO scores (name,wins,loses) VALUES ('{}','0','0')".format(name, 0, 0)) 
 
 
 def get_value(col, name):
