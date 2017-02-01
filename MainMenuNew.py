@@ -5,6 +5,7 @@ import main
 import game
 import other
 import database
+
 pygame.init()
 width = 700
 height = 800
@@ -66,7 +67,7 @@ class InstructionMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height        
-        self.Image = pygame.image.load(os.path.join('Project2/spelregels.bmp'))
+        self.Image = pygame.image.load(os.path.join('Project2/rules.bmp'))
 
         self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]
     def Update(self):
@@ -81,7 +82,7 @@ class InstructionMenu:
         return self
 
     def Draw(self, screen):
-        screen.blit(self.Image,(150, 50))
+        screen.blit(self.Image,(100, -25))
         for button in self.Buttons:
             button.Draw(screen)
 
@@ -90,13 +91,14 @@ class HighScoreMenu:
     def __init__(self, width, height):
         self.Width = width
         self.Height = height 
-        #self.Image = pygame.image.load(os.path.join('project2/euromast_illustratie_02.jpg'))
+
         self.scorelist = database.execute_query("SELECT name,wins FROM scores ORDER BY wins DESC")
         self.playernames = []
         self.playerscores = []
         self.highscore = []
 
-        self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]    
+        self.Buttons = [Button("BACK", 10, 50, lambda : MainMenu(width, height))]
+           
     
     def update1(self):
         for entry in self.scorelist:
@@ -121,6 +123,7 @@ class HighScoreMenu:
         for l in range(0,10):
 
             screen.blit(font.render(str(self.highscore[l]),True,(0,0,0)),(150, 50*((1+l)*1.1)))
+
         for k in range(1,11,2):
             screen.blit(font.render("wins",True,(0,0,0)),(180, 50*((1+k)*1.1)))
             #screen.blit(self.playerscores[l],(450, 50*((1+l)*30)))
