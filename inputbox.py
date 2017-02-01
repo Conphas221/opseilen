@@ -12,7 +12,17 @@
 #
 # Only near the center of the screen is blitted to
 
-import pygame, pygame.font, pygame.event, pygame.draw, string
+import pygame
+import string
+
+red = (255, 99, 71)
+green = (50, 205, 50) 
+blue = (65, 105, 225) 	
+white = (255,255,255)
+black = (0,0,0)
+yellow = (230, 230, 0)
+purple = (95,158,160)
+
 from pygame.locals import *
 
 def get_key():
@@ -25,18 +35,18 @@ def get_key():
 
 def display_box(screen, message):
   "Print a message in a box in the middle of the screen"
-  fontobject = pygame.font.Font(None,18)
-  pygame.draw.rect(screen, (0,0,0),
-                   ((screen.get_width() / 2) - 100,
-                    (screen.get_height() / 2) - 10,
+  fontobject = pygame.font.Font(None,25)
+  pygame.draw.rect(screen, (255,255,255),
+                   ((screen.get_width() / 2),
+                    (screen.get_height() / 2),
                     410,20), 0)
   pygame.draw.rect(screen, (255,255,255),
-                   ((screen.get_width() / 2) - 102,
-                    (screen.get_height() / 2) - 12,
+                   ((screen.get_width() / 2),
+                    (screen.get_height() / 2),
                     410,24), 1)
   if len(message) != 0:
     screen.blit(fontobject.render(message, 1, (255,255,255)),
-                ((screen.get_width() / 2) - 100, (screen.get_height() / 2) - 10))
+                ((screen.get_width() / 2), (screen.get_height() / 2)))
   pygame.display.flip()
 
 def ask(screen, question):
@@ -59,6 +69,6 @@ def ask(screen, question):
 
 def main():
   screen = pygame.display.set_mode((320,240))
-  print(ask(screen, "Name") + " was entered")
+  print(ask(screen, "NAME") + " was entered")
 
 if __name__ == '__main__': main()
